@@ -145,8 +145,8 @@
 
          .progress-circle-container {
             position: relative;
-            width: 150px;  /* Increased from 120px */
-            height: 150px; /* Increased from 120px */
+            width: 200px;  /* Increased from 120px */
+            height: 200px; /* Increased from 120px */
             margin: 2rem auto;
             background: var(--bg-secondary);
             padding: 20px;
@@ -168,10 +168,10 @@
                 stroke-width: 8;
             }
 
-            .progress-circle-progress {
+.progress-circle-progress {
     fill: none;
     stroke: var(--accent-color);
-    stroke-width: 8;
+    stroke-width:9;
     stroke-linecap: round;
     transition: stroke-dashoffset 0.3s ease;
 }
@@ -179,13 +179,13 @@
 .progress-text {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left:50%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
 
 .progress-percentage {
-    font-size: 2rem;  /* Increased from 1.5rem */
+    font-size: 1.8rem;  /* Increased from 1.5rem */
     font-weight: bold;
     color: var(--text-primary);
     margin-bottom: 0.25rem;
@@ -602,8 +602,8 @@ input[type="text"]:hover, input[type="text"]:focus {
     }
     
     .progress-circle-container {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 }
 
@@ -774,7 +774,7 @@ input[type="text"]:hover, input[type="text"]:focus {
     background-color: #1F2937;
     color: #d51b34;
     border-color: #60A5FA;
-    placeholder-color: #9CA3AF;
+    /* placeholder-color: #9CA3AF; */
 }
 
 /* Add hover effects for better interaction */
@@ -973,32 +973,12 @@ input[type="text"]:hover, input[type="text"]:focus {
     <button class="text-size-btn" data-size="120" title="Larger text">A+</button>
 </div>
 
-    <!-- Replace the existing export button -->
-<div class="action-buttons">
-    <button id="clearButton" class="action-btn clear-btn">
-        Clear All Checks
-    </button>
-    <div class="export-buttons flex gap-2">
-        <button class="action-btn export-btn" onclick="exportProgress()">
-            📄 Export as Text
-        </button>
-        <button class="action-btn export-btn" onclick="exportProgressAsPDF()">
-            📑 Export as PDF
-        </button>
-        <!-- Add this inside your .export-buttons div -->
-        <button class="action-btn export-btn" onclick="exportRevisionProgress()">
-            🔁 Export Revision Progress
-        </button>
-    </div>
-</div>
-
-    
 
     <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
         <h1 class="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
             🚀 Your AI/ML & Data Science Learning Journey
         </h1>
-
+        <br>
     
         <!-- Motivation Quote Section -->
         <div class="bg-gray-900 text-white p-6 rounded-lg mb-8 transform hover:-translate-y-1 transition-transform duration-300">
@@ -1007,32 +987,53 @@ input[type="text"]:hover, input[type="text"]:focus {
             </blockquote>
             <p class="text-right mt-2 text-gray-400">— Every Successful Data Scientist</p>
         </div>
-    
+
+
         <!-- Track Your Progress Text -->
         <div class="text-center mb-8">
             <h2 class="text-2xl font-semibold text-gray-800 mb-2">Track Your Progress</h2>
-            <p class="text-gray-600">Check off items as you complete them. Your progress is automatically saved.</p>
         </div>
     
         <hr class="my-8 border-gray-300">
 
+
+        <div class="action-buttons">
+            <button id="clearButton" class="action-btn clear-btn">
+                Clear All Checks
+            </button>
+            <div class="export-buttons flex gap-2">
+                <button class="action-btn export-btn" onclick="exportProgress()">
+                    📄 Export as Text
+                </button>
+                <button class="action-btn export-btn" onclick="exportProgressAsPDF()">
+                    📑 Export as PDF
+                </button>
+                <!-- Add this inside your .export-buttons div -->
+                <button class="action-btn export-btn" onclick="exportRevisionProgress()">
+                    🔁 Export Revision Progress
+                </button>
+            </div>
+        </div>
+    
+        
+
     <!-- Add this right after the search-box div and before the content -->
+<!-- Replace the existing progress circle container with this -->
 <div class="progress-circle-container">
     <svg class="progress-circle" viewBox="0 0 100 100">
-        <!-- Background circle -->
         <circle class="progress-circle-bg" 
                 cx="50" cy="50" r="45" 
                 fill="none" 
                 stroke="#edf2f7" 
                 stroke-width="8"/>
-        <!-- Progress circle -->
         <circle class="progress-circle-progress" 
                 cx="50" cy="50" r="45" 
                 fill="none" 
                 stroke="#4299e1" 
-                stroke-width="8" 
-                stroke-linecap="round"
-                transform="rotate(-90 50 50)"/>
+                stroke-width="8"
+                stroke-dasharray="283"
+                stroke-dashoffset="283"
+                stroke-linecap="round"/>
     </svg>
     <div class="progress-text">
         <div class="progress-percentage">0%</div>
@@ -2053,50 +2054,158 @@ function addExportButton() {
 }
 
 function exportRevisionProgress() {
-    const exportBtn = document.querySelectorAll('.export-btn')[2]; // 3rd button (Revision Export)
-    exportBtn.innerHTML = '⏳ Exporting...';
+    const exportBtn = document.querySelectorAll('.export-btn')[2];
+    exportBtn.innerHTML = '⏳ Exporting PDF...';
     exportBtn.disabled = true;
 
-    let content = `AI/ML & Data Science Revision Progress Report\n`;
-    content += `Generated on: ${new Date().toLocaleString()}\n\n`;
-    content += `-------------------\n\n`;
+    // Create content with improved styling
+    const content = document.createElement('div');
+    content.innerHTML = `
+        <div style="padding: 20px; font-family: Arial, sans-serif;">
+            <h1 style="text-align: center; color: #1a365d; margin-bottom: 20px;">
+                AI/ML & Data Science Revision Progress Report
+            </h1>
+            <p style="text-align: center; color: #4a5568;">
+                Generated on: ${new Date().toLocaleString()}
+            </p>
+            <hr style="border: 1px solid #e2e8f0; margin: 20px 0;">
+    `;
 
+    // Track phase-wise statistics
+    const phaseStats = {};
+    
+    // Collect data and calculate statistics
     document.querySelectorAll('section').forEach(section => {
         let sectionTitle = section.querySelector('h2')?.textContent;
         if (section.id === 'phase-1') {
             sectionTitle = '🎯 Phase 1: Foundation';
         }
+        
         const tasks = section.querySelectorAll('input[type="checkbox"]:not([disabled])');
         if (tasks.length > 0) {
-            content += `${sectionTitle}\n`;
+            // Initialize phase statistics
+            const phaseId = section.id;
+            phaseStats[phaseId] = {
+                totalTasks: tasks.length,
+                revisedTasks: 0,
+                totalRevisions: 0,
+                lastRevisionDate: null
+            };
+
+            // Add section header
+            content.innerHTML += `
+                <div style="margin: 20px 0; padding: 15px; background-color: #f7fafc; border-radius: 8px;">
+                    <h2 style="color: #2d3748; margin-bottom: 15px;">${sectionTitle}</h2>
+            `;
+
+            // Process tasks
+            const revisedTasks = [];
             tasks.forEach(task => {
                 const label = task.nextElementSibling.textContent;
-                const revCount = localStorage.getItem(`${task.id}_rev`) || '0';
+                const revCount = parseInt(localStorage.getItem(`${task.id}_rev`) || '0');
                 const revDate = localStorage.getItem(`${task.id}_revdate`);
-                if (parseInt(revCount) > 0) {
-                    content += `- ${label} | Revisions: ${revCount}x${revDate ? ` (Last: ${new Date(revDate).toLocaleDateString()})` : ''}\n`;
+
+                if (revCount > 0) {
+                    revisedTasks.push({
+                        label,
+                        revCount,
+                        revDate: revDate ? new Date(revDate) : null
+                    });
+
+                    // Update phase statistics
+                    phaseStats[phaseId].revisedTasks++;
+                    phaseStats[phaseId].totalRevisions += revCount;
+                    if (revDate) {
+                        const date = new Date(revDate);
+                        if (!phaseStats[phaseId].lastRevisionDate || 
+                            date > phaseStats[phaseId].lastRevisionDate) {
+                            phaseStats[phaseId].lastRevisionDate = date;
+                        }
+                    }
                 }
             });
-            content += `\n-------------------\n\n`;
+
+            // Add tasks to content
+            if (revisedTasks.length > 0) {
+                revisedTasks.sort((a, b) => b.revCount - a.revCount); // Sort by revision count
+                content.innerHTML += `
+                    <div style="margin-left: 20px;">
+                        ${revisedTasks.map(task => `
+                            <p style="margin: 5px 0; color: #4a5568;">
+                                • ${task.label}
+                                <span style="color: #3182ce; font-weight: bold;">
+                                    (${task.revCount}x)
+                                </span>
+                                ${task.revDate ? 
+                                    `<span style="color: #718096; font-size: 0.9em;">
+                                        Last: ${task.revDate.toLocaleDateString()}
+                                    </span>` : 
+                                    ''}
+                            </p>
+                        `).join('')}
+                    </div>
+                </div>`;
+            }
         }
     });
 
-    // Create and download the file
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `AI-ML-Revision-Progress-${new Date().toLocaleDateString().replace(/\//g, '-')}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // Add Phase-wise Summary Statistics
+    content.innerHTML += `
+        <div style="margin-top: 30px; padding: 20px; background-color: #ebf8ff; border-radius: 8px;">
+            <h2 style="color: #2c5282; margin-bottom: 15px;">Phase-wise Summary Statistics</h2>
+            ${Object.entries(phaseStats).map(([phaseId, stats]) => `
+                <div style="margin: 15px 0; padding: 10px; background-color: white; border-radius: 4px;">
+                    <h3 style="color: #2d3748; margin-bottom: 10px;">
+                        ${phaseId.replace(/-/g, ' ').toUpperCase()}
+                    </h3>
+                    <p style="color: #4a5568; margin: 5px 0;">
+                        Tasks Revised: ${stats.revisedTasks}/${stats.totalTasks} 
+                        (${((stats.revisedTasks/stats.totalTasks) * 100).toFixed(1)}%)
+                    </p>
+                    <p style="color: #4a5568; margin: 5px 0;">
+                        Total Revisions: ${stats.totalRevisions}
+                    </p>
+                    <p style="color: #4a5568; margin: 5px 0;">
+                        Average Revisions per Task: 
+                        ${(stats.totalRevisions/stats.revisedTasks).toFixed(1)}
+                    </p>
+                    ${stats.lastRevisionDate ? `
+                        <p style="color: #4a5568; margin: 5px 0;">
+                            Last Revision: ${stats.lastRevisionDate.toLocaleDateString()}
+                        </p>
+                    ` : ''}
+                </div>
+            `).join('')}
+        </div>
+    `;
 
-    setTimeout(() => {
-        exportBtn.innerHTML = '🔁 Export Revision Progress';
-        exportBtn.disabled = false;
-    }, 1000);
+    content.innerHTML += '</div>';
+
+    // PDF options
+    const opt = {
+        margin: 1,
+        filename: `AI-ML-Revision-Progress-${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Generate PDF
+    html2pdf().set(opt).from(content).save()
+        .then(() => {
+            exportBtn.innerHTML = '🔁 Export Revision Progress';
+            exportBtn.disabled = false;
+        })
+        .catch(err => {
+            console.error('PDF generation failed:', err);
+            exportBtn.innerHTML = '❌ Export Failed';
+            setTimeout(() => {
+                exportBtn.innerHTML = '🔁 Export Revision Progress';
+                exportBtn.disabled = false;
+            }, 2000);
+        });
 }
+
 // Replace your existing export function with this improved version
 
 // Replace the existing export function with this one
@@ -2319,46 +2428,69 @@ function addTimeEstimates() {
     });
 }
 
+// Update the updateProgress function
 function updateProgress() {
-            const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
-            const totalTasks = checkboxes.length;
-            const completedTasks = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
-            const progressPercent = (completedTasks / totalTasks * 100).toFixed(2); // Show 2 decimal places
+    const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
+    const totalTasks = checkboxes.length;
+    const completedTasks = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+    const progressPercent = (completedTasks / totalTasks * 100).toFixed(1);
 
-            // Update the circle progress
-            const circle = document.querySelector('.progress-circle-progress');
-            const radius = circle.getAttribute('r');
-            const circumference = 2 * Math.PI * radius;
-            const offset = circumference - (progressPercent / 100) * circumference;
-            
-            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+    // Update circle progress
+    const circle = document.querySelector('.progress-circle-progress');
+    if (circle) {
+        const radius = 45;
+        const circumference = 2 * Math.PI * radius;
+        const offset = circumference - (progressPercent / 100) * circumference;
+        
+        // Set initial dasharray
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        
+        // Add a small delay to ensure the dasharray is applied before the offset
+        requestAnimationFrame(() => {
             circle.style.strokeDashoffset = offset;
+        });
+    }
 
-            // Update the percentage text with 2 decimal places
-            document.querySelector('.progress-percentage').textContent = `${progressPercent}%`;
+    // Update text display
+    const percentageElement = document.querySelector('.progress-percentage');
+    const labelElement = document.querySelector('.progress-label');
+    
+    if (percentageElement) {
+        percentageElement.textContent = `${progressPercent}%`;
+    }
+    if (labelElement) {
+        labelElement.textContent = `${completedTasks}/${totalTasks} Tasks`;
+    }
 
-            // Optional: Add total tasks count
-            document.querySelector('.progress-label').textContent = 
-                `${completedTasks}/${totalTasks} Tasks`;
-        }
+    return { progressPercent, completedTasks, totalTasks };
+}
         // Add event listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add to your existing DOMContentLoaded event listener
-            const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
-            
-            checkboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', updateProgress);
-            });
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
+    
+    // Load saved states
+    checkboxes.forEach(checkbox => {
+            if (checkbox.id) {
+                const savedState = localStorage.getItem(checkbox.id);
+                if (savedState === 'true') {
+                    checkbox.checked = true;
+                }
+            }
+        });
 
-            // Initial progress update
-            updateProgress();
-
-            // Add to clear button event
-            document.getElementById('clearButton').addEventListener('click', function() {
-                // ... your existing clear logic ...
-                updateProgress();
+        // Add change listeners
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                if (checkbox.id) {
+                    localStorage.setItem(checkbox.id, checkbox.checked);
+                    updateProgress();
+                }
             });
         });
+
+    // Initial progress update
+    updateProgress();
+});
 
         // Add these utility functions at the top of your script section
      
@@ -2607,73 +2739,112 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.task-list-item').forEach(item => {
-    // Skip if already has a tracker
-    if (item.querySelector('.revision-tracker')) return;
-    const input = item.querySelector('input[type="checkbox"]');
-    const label = item.querySelector('label');
-    if (!input || !label) return;
-    const taskId = input.id;
+function initializeTaskTracking() {
+    // Initialize progress tracking
+    const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
+    
+    checkboxes.forEach(checkbox => {
+        // Load saved state
+        if (checkbox.id) {
+            const savedState = localStorage.getItem(checkbox.id);
+            if (savedState === 'true') {
+                checkbox.checked = true;
+            }
+        }
 
-    // Create tracker
-    const tracker = document.createElement('div');
-    tracker.className = 'revision-tracker';
-    tracker.setAttribute('data-task', taskId);
-
-    // Load revision data from localStorage
-    let count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10);
-    let lastDate = localStorage.getItem(taskId + '_revdate') || '';
-
-    tracker.innerHTML = `
-  <button class="revision-btn revision-decr" title="Decrease revision">➖</button>
-  <span class="revision-count">${count}x</span>
-  <button class="revision-btn revision-incr" title="Add revision">🔄</button>
-  <span class="last-revision-date">${lastDate ? new Date(lastDate).toLocaleDateString() : ''}</span>
-`;
-
-    // Wrap input+label in .task-flex
-    const flex = document.createElement('div');
-    flex.className = 'task-flex';
-    flex.appendChild(input.cloneNode(true));
-    flex.appendChild(label.cloneNode(true));
-    flex.appendChild(tracker); // tracker on the right
-    item.innerHTML = '';
-    item.appendChild(flex);
-
-    const incrBtn = tracker.querySelector('.revision-incr');
-const decrBtn = tracker.querySelector('.revision-decr');
-const countSpan = tracker.querySelector('.revision-count');
-const dateSpan = tracker.querySelector('.last-revision-date');
-
-incrBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) + 1;
-  lastDate = new Date().toISOString();
-  localStorage.setItem(taskId + '_rev', count);
-  localStorage.setItem(taskId + '_revdate', lastDate);
-  countSpan.textContent = `${count}x`;
-  dateSpan.textContent = new Date(lastDate).toLocaleDateString();
-  countSpan.style.transform = 'scale(1.2)';
-  setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
-});
-
-decrBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  count = Math.max(0, parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) - 1);
-  localStorage.setItem(taskId + '_rev', count);
-  if (count === 0) {
-    localStorage.removeItem(taskId + '_revdate');
-    dateSpan.textContent = '';
-  } else {
-    dateSpan.textContent = new Date(localStorage.getItem(taskId + '_revdate')).toLocaleDateString();
-  }
-  countSpan.textContent = `${count}x`;
-  countSpan.style.transform = 'scale(1.2)';
-  setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
-});
+        // Add change listener
+        checkbox.addEventListener('change', (e) => {
+            if (checkbox.id) {
+                localStorage.setItem(checkbox.id, checkbox.checked);
+                if (e.target.checked) {
+                    celebrate();
+                }
+                updateProgress();
+            }
+        });
     });
-  });
+
+    // Initial progress update
+    updateProgress();
+}
+
+// Modify the revision initialization code
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.task-list-item').forEach(item => {
+        // Skip if already has a tracker
+        if (item.querySelector('.revision-tracker')) return;
+        const input = item.querySelector('input[type="checkbox"]');
+        const label = item.querySelector('label');
+        if (!input || !label) return;
+        const taskId = input.id;
+
+        // Create tracker
+        const tracker = document.createElement('div');
+        tracker.className = 'revision-tracker';
+        tracker.setAttribute('data-task', taskId);
+
+        // Load revision data from localStorage
+        let count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10);
+        let lastDate = localStorage.getItem(taskId + '_revdate') || '';
+
+        tracker.innerHTML = `
+            <button class="revision-btn revision-decr" title="Decrease revision">➖</button>
+            <span class="revision-count">${count}x</span>
+            <button class="revision-btn revision-incr" title="Add revision">🔄</button>
+            <span class="last-revision-date">${lastDate ? new Date(lastDate).toLocaleDateString() : ''}</span>
+        `;
+
+        // Wrap input+label in .task-flex
+        const flex = document.createElement('div');
+        flex.className = 'task-flex';
+        const newInput = input.cloneNode(true);
+        
+        // Transfer the checked state to the new input
+        newInput.checked = input.checked;
+        
+        flex.appendChild(newInput);
+        flex.appendChild(label.cloneNode(true));
+        flex.appendChild(tracker);
+        item.innerHTML = '';
+        item.appendChild(flex);
+
+        // Add revision button handlers
+        const incrBtn = tracker.querySelector('.revision-incr');
+        const decrBtn = tracker.querySelector('.revision-decr');
+        const countSpan = tracker.querySelector('.revision-count');
+        const dateSpan = tracker.querySelector('.last-revision-date');
+
+        incrBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) + 1;
+            lastDate = new Date().toISOString();
+            localStorage.setItem(taskId + '_rev', count);
+            localStorage.setItem(taskId + '_revdate', lastDate);
+            countSpan.textContent = `${count}x`;
+            dateSpan.textContent = new Date(lastDate).toLocaleDateString();
+            countSpan.style.transform = 'scale(1.2)';
+            setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
+        });
+
+        decrBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            count = Math.max(0, parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) - 1);
+            localStorage.setItem(taskId + '_rev', count);
+            if (count === 0) {
+                localStorage.removeItem(taskId + '_revdate');
+                dateSpan.textContent = '';
+            } else {
+                dateSpan.textContent = new Date(localStorage.getItem(taskId + '_revdate')).toLocaleDateString();
+            }
+            countSpan.textContent = `${count}x`;
+            countSpan.style.transform = 'scale(1.2)';
+            setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
+        });
+    });
+
+    // Initialize progress tracking after adding revision trackers
+    initializeTaskTracking();
+});
 
 </script>
 
