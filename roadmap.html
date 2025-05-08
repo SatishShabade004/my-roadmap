@@ -1,0 +1,2681 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="color-scheme" content="light dark">
+    <title>🚀 Interactive AI/ML & Data Science Roadmap</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Add these meta tags -->
+
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+    
+        /* Apply Inter font globally */
+        html {
+        --bg-primary: #F3F4F6;
+        --bg-secondary: #FFFFFF;
+        transition: all 0.3s ease;
+        }
+        
+        body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+    font-size: 1.05rem; /* Slightly larger base font */
+    line-height: 1.6;  
+}
+        /* Style for checked list items */
+        .task-list-item input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+            color: #9ca3af; /* gray-400 */
+        }
+        /* Custom checkbox appearance */
+        .task-list-item input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            height: 1.25rem; /* h-5 */
+            width: 1.25rem; /* w-5 */
+            background-color: #f3f4f6; /* gray-100 */
+            border: 1px solid #d1d5db; /* gray-300 */
+            border-radius: 0.25rem; /* rounded */
+            display: inline-block;
+            position: relative;
+            margin-right: 0.5rem; /* mr-2 */
+            cursor: pointer;
+            vertical-align: middle; /* Align checkbox with text */
+            flex-shrink: 0; /* Prevent checkbox from shrinking */
+        }
+        /* Checkmark style */
+        .task-list-item input[type="checkbox"]:checked::after {
+            content: '✔';
+            font-size: 0.875rem; /* text-sm */
+            color: #ffffff; /* white */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+        }
+        .task-list-item input[type="checkbox"]:checked {
+            background-color: #3b82f6; /* blue-500 */
+            border-color: #3b82f6; /* blue-500 */
+        }
+        /* Ensure labels align nicely with checkboxes */
+        .task-list-item label {
+             display: inline; /* Allow text wrapping */
+             vertical-align: middle;
+        }
+         /* Add some space between list items */
+        .task-list-item {
+            display: flex; /* Use flexbox for alignment */
+            align-items: flex-start; /* Align items to the start */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+         /* Style for nested lists */
+        ul ul, ol ol, ul ol, ol ul {
+            margin-left: 1.5rem; /* ml-6 */
+            margin-top: 0.5rem; /* mt-2 */
+        }
+        /* Style for reward sections */
+        .reward-section {
+            background-color: #fef9c3; /* yellow-100 */
+            border: 1px solid #fde047; /* yellow-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem; /* p-3 */
+            margin-top: 1rem; /* mt-4 */
+            margin-bottom: 1.5rem; /* mb-6 */
+            font-style: italic;
+            color: #ca8a04; /* yellow-600 */
+        }
+        /* Style for phase goals */
+        .phase-goal {
+            font-style: italic;
+            color: #6b7280; /* gray-500 */
+            margin-bottom: 1.05rem; /* mb-4 */
+        }
+        /* Style for section headings */
+        h3 {
+            margin-top: 1.5rem; /* mt-6 */
+            margin-bottom: 0.75rem; /* mb-3 */
+            font-weight: 600; /* font-semibold */
+            font-size: 1.35rem; /* text-lg */
+            border-bottom: 1px solid #e5e7eb; /* border-b border-gray-200 */
+            padding-bottom: 0.25rem; /* pb-1 */
+        }
+        /* Style for phase headings */
+         h2 {
+            margin-top: 2.5rem; /* mt-10 */
+            margin-bottom: 1rem; /* mb-4 */
+            font-weight: 700; /* font-bold */
+            font-size: 1.75rem; /* text-2xl */
+            color: #1e3a8a; /* blue-900 */
+            border-bottom: 2px solid #93c5fd; /* border-b-2 border-blue-300 */
+            padding-bottom: 0.5rem; /* pb-2 */
+        }
+        /* Style for main title */
+        h1 {
+            font-size: 2.5rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1rem; /* mb-4 */
+            color: #111827; /* gray-900 */
+        }
+        /* Style for notes */
+        .notes-section {
+            margin-top: 2rem; /* mt-8 */
+            padding: 1rem; /* p-4 */
+            background-color: #f3f4f6; /* gray-100 */
+            border-left: 4px solid #6b7280; /* border-l-4 border-gray-500 */
+            color: #4b5563; /* gray-700 */
+        }
+        .notes-section strong {
+             color: #1f2937; /* gray-800 */
+        }
+        /* Style for clear button */
+        #clearButton {
+            margin-top: 2rem; /* mt-8 */
+            margin-bottom: 2rem; /* mb-8 */
+         }
+
+         .progress-circle-container {
+            position: relative;
+            width: 150px;  /* Increased from 120px */
+            height: 150px; /* Increased from 120px */
+            margin: 2rem auto;
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+}
+
+            .progress-circle {
+                width: 100%;
+                height: 100%;
+                transform: rotate(-90deg);
+            }
+
+
+            .progress-circle-bg {
+                fill: none;
+                stroke: var(--progress-bg);
+                stroke-width: 8;
+            }
+
+            .progress-circle-progress {
+    fill: none;
+    stroke: var(--accent-color);
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.3s ease;
+}
+
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.progress-percentage {
+    font-size: 2rem;  /* Increased from 1.5rem */
+    font-weight: bold;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.progress-label {
+    font-size: 0.9rem;  /* Increased from 0.875rem */
+    color: var(--text-secondary);
+}
+
+@media (max-width: 640px) {
+    .progress-circle-container {
+        width: 120px;  /* Smaller size for mobile */
+        height: 120px;
+        padding: 15px;
+    }
+
+    .progress-percentage {
+        font-size: 1.5rem !important;  /* Smaller font for mobile */
+    }
+
+    .progress-label {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 380px) {
+    .progress-circle-container {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+    }
+}
+
+        /* Updated color scheme and hover effects */
+        body {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary);
+    transition: background-color 0.3s ease;
+}
+
+.max-w-4xl {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+/* Headers styling */
+h1 {
+    background: linear-gradient(120deg, #1a365d 0%, #2c5282 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+h2 {
+    color: #2d3748;
+    border-bottom: 2px solid #4299e1;
+    transition: all 0.3s ease;
+}
+
+h2:hover {
+    color: #2b6cb0;
+    border-bottom-color: #2b6cb0;
+    transform: translateX(5px);
+}
+
+h3 {
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+h3:hover {
+    color: #2d3748;
+    border-bottom-color: #4299e1;
+}
+
+h1, h2, h3 {
+    color: var(--heading-color);
+}
+
+/* Checkbox styling */
+.task-list-item input[type="checkbox"] {
+    background-color: var(--checkbox-bg);
+    border-color: var(--checkbox-border);
+}
+
+.task-list-item input[type="checkbox"]:hover {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.task-list-item input[type="checkbox"]:checked {
+    background: linear-gradient(145deg, #3182ce, #4299e1);
+    border-color: #2b6cb0;
+}
+
+.task-list-item input[type="checkbox"]:checked::after {
+    color: #ffffff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Label styling */
+.task-list-item label {
+    color: var(--text-primary);
+}
+
+.task-list-item:hover label {
+    color: #2d3748;
+}
+
+.task-list-item input[type="checkbox"]:checked + label {
+    color: #718096;
+    text-decoration-color: #a0aec0;
+}
+
+/* Progress circle styling */
+.progress-circle-container {
+    background-color: var(--card-bg);    
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.progress-circle-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+}
+
+.progress-circle-bg {
+    stroke: #edf2f7;
+}
+
+.progress-percentage {
+    color: var(--text-primary);
+}
+
+.progress-label {
+    color: var(--text-secondary);
+}
+
+.progress-circle-progress {
+    stroke: linear-gradient(120deg, #3182ce, #4299e1);
+    filter: drop-shadow(0 0 2px rgba(49, 130, 206, 0.3));
+}
+
+/* Reward section styling */
+.reward-section {
+    background-color: var(--reward-bg);
+    border-color: var(--reward-border);
+    color: var(--reward-text);
+}
+
+.reward-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.1);
+}
+
+/* Notes section styling */
+.notes-section {
+    background-color: var(--notes-bg);
+    border-color: var(--notes-border);
+    color: var(--notes-text);
+}
+.notes-section:hover {
+    border-left-color: #475569;
+    transform: translateX(2px);
+}
+
+/* Clear button styling */
+#clearButton {
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    color: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+#clearButton:hover {
+    background: linear-gradient(145deg, #dc2626, #b91c1c);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+}
+
+/* Quote section styling */
+.bg-gray-900 {
+    background: linear-gradient(145deg, #1a202c, #2d3748);
+    transition: all 0.3s ease;
+}
+
+.bg-gray-900:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Tools section styling */
+#tools-technologies {
+    background-color: var(--bg-secondary);
+    transition: all 0.3s ease;
+}
+
+#tools-technologies:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Phase goal styling */
+.phase-goal {
+    color: #718096;
+    font-style: italic;
+    transition: all 0.3s ease;
+}
+
+.phase-goal:hover {
+    color: #4a5568;
+}
+
+/* List item hover effects */
+ul li {
+    transition: all 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateX(3px);
+    color: #2d3748;
+}
+
+/* Input field styling */
+input[type="text"] {
+    background: linear-gradient(145deg, #ffffff, #f8fafc);
+    border: 2px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:hover, input[type="text"]:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] {
+    --bg-primary: #111827;  /* Very dark background */
+    --bg-secondary: #1F2937; /* Slightly lighter dark background */
+    --text-primary: #F9FAFB; /* Very light text */
+    --text-secondary: #D1D5DB; /* Slightly darker light text */
+    --border-color: #374151; /* Dark gray border */
+    --accent-color: #60A5FA; /* Brighter blue for dark mode */
+    --checkbox-bg: #374151; /* Dark checkbox background */
+    --checkbox-border: #4B5563; /* Dark checkbox border */
+    --section-bg: #1F2937; /* Section background */
+    --heading-color: #F3F4F6; /* Light heading text */
+    --card-bg: #1F2937; /* Card background */
+    --reward-bg: #374151; /* Dark reward section */
+    --reward-border: #4B5563; /* Dark reward border */
+    --reward-text: #e51953; /* Yellow text for rewards */
+    --notes-bg: #1F2937; /* Dark notes background */
+    --notes-border: #4B5563; /* Dark notes border */
+    --notes-text: #E5E7EB; /* Light notes text */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Darker shadow */
+}
+
+
+
+[data-theme="light"] {
+    --bg-primary: #F3F4F6;
+    --bg-secondary: #FFFFFF;
+    --text-primary: #111827;
+    --text-secondary: #4B5563;
+    --border-color: #E5E7EB;
+    --accent-color: #3B82F6;
+    --checkbox-bg: #FFFFFF;
+    --checkbox-border: #D1D5DB;
+    --section-bg: #FFFFFF;
+    --heading-color: #111827;
+    --card-bg: #FFFFFF;
+    --reward-bg: #FEF3C7;
+    --reward-border: #FCD34D;
+    --reward-text: #92400E;
+    --notes-bg: #F3F4F6;
+    --notes-border: #9CA3AF;
+    --notes-text: #4B5563;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+.celebration {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 2rem;
+    border-radius: 1rem;
+    /* Glass effect background */
+    background: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--accent-color);
+}
+   
+.celebration.show {
+    opacity: 1;
+    animation: celebrationPop 0.3s ease-out;
+}
+/* Add animation keyframes */
+@keyframes celebrationPop {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+[data-theme="light"] .celebration {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    box-shadow: 0 8px 32px rgba(66, 153, 225, 0.2);
+    border: 2px solid #4299e1;
+}
+
+[data-theme="dark"] .celebration {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 2px solid #4299e1;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+/* Add these styles to ensure text visibility */
+[data-theme="dark"] input[type="text"] {
+    background-color: #374151;
+    color: #F9FAFB;
+    border-color: #4B5563;
+}
+
+[data-theme="dark"] .reward-section input[type="text"] {
+    background-color: #374151;
+    color: #FCD34D;
+    border-color: #4B5563;
+    placeholder-color: #9CA3AF;
+}
+
+[data-theme="dark"] .task-list-item input[type="checkbox"]:checked + label {
+    color: #9CA3AF;
+    text-decoration-color: #4B5563;
+}
+
+[data-theme="dark"] .progress-circle-container {
+    background-color: #1F2937;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .progress-percentage {
+    color: #F9FAFB;
+}
+
+[data-theme="dark"] .progress-label {
+    color: #D1D5DB;
+}
+
+[data-theme="dark"] .progress-circle-bg {
+    stroke: #374151 !important;
+}
+
+[data-theme="dark"] .progress-circle-progress {
+    stroke: var(--accent-color) !important;
+}
+/* Add smooth transitions */
+*, *::before, *::after {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+[class*="bg-"] {
+    background-color: inherit !important;
+}
+
+/* Add these media queries */
+@media (max-width: 640px) {
+    .max-w-4xl {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+    }
+    
+    .progress-circle-container {
+        width: 80px;
+        height: 80px;
+    }
+}
+
+@media (max-width: 480px) {
+    .task-list-item {
+        font-size: 0.875rem;
+    }
+    
+    .celebration {
+        width: 90vw;
+        font-size: 1.5rem;
+    }
+}
+/* Add these performance optimizations */
+* {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add will-change for better performance on animations */
+.progress-circle-progress,
+.task-list-item,
+.celebration {
+    will-change: transform;
+}
+
+/* Optimize transitions */
+.theme-toggle,
+.task-list-item,
+.celebration {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Add print styles */
+@media print {
+    .theme-toggle,
+    .celebration,
+    #clearButton {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .max-w-4xl {
+        box-shadow: none !important;
+    }
+}
+
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Add to your CSS */
+.time-estimate {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-left: 0.5rem;
+}
+
+/* Add these styles for search and filter */
+.search-box {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: 0.5rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.25rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.filter-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-btn {
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.export-btn {
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Update the reward section styles */
+[data-theme="light"] .reward-section {
+    background-color: #FEF3C7;
+    border-color: #FCD34D;
+    color: #92400E;
+}
+
+[data-theme="light"] .reward-section input[type="text"] {
+    background-color: #FFFFFF;
+    color: #246bce;
+    border-color: #FCD34D;
+    placeholder-color: #9CA3AF;
+}
+
+[data-theme="dark"] .reward-section {
+    background-color: #374151;
+    border-color: #4B5563;
+    color: #F3F4F6;
+}
+
+[data-theme="dark"] .reward-section input[type="text"] {
+    background-color: #1F2937;
+    color: #d51b34;
+    border-color: #60A5FA;
+    placeholder-color: #9CA3AF;
+}
+
+/* Add hover effects for better interaction */
+.reward-section input[type="text"]:hover {
+    border-color: var(--accent-color);
+}
+
+.reward-section input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+/* Add to your existing <style> section */
+    .text-size-controls {
+    background: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-size-controls label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.slider {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--bg-primary);
+    outline: none;
+    -webkit-appearance: none;
+    margin: 0.5rem 0;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+#sizeValue {
+    display: inline-block;
+    min-width: 3rem;
+    text-align: center;
+    color: var(--text-primary);
+}
+
+.preset-sizes {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.size-preset {
+    padding: 0.25rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.size-preset:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.size-preset.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+/* Add to your existing <style> section */
+    .text-size-controls {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    gap: 0.25rem;
+    background: var(--bg-secondary);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.text-size-btn {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
+}
+
+.text-size-btn:hover {
+    background: var(--accent-color);
+    color: white;
+}
+
+.text-size-btn.active {
+    background: var(--accent-color);
+    color: white;
+}
+
+.export-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.export-btn {
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.export-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.export-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add or update in your <style> section */
+    .task-flex {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between; /* This pushes the tracker to the far right */
+  gap: 0.5rem;
+
+  
+}
+
+
+
+.revision-tracker {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 80px;
+  margin-left: auto;
+}
+
+.revision-btn {
+  margin: 0 2px;
+}
+
+
+</style>
+</head>
+
+
+<body class="p-4 md:p-8">
+
+    <div class="search-box">
+        <input type="text" 
+               id="taskSearch" 
+               placeholder="Search tasks..."
+               aria-label="Search tasks">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Tasks</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+        </div>
+    </div>
+
+    <!-- Add this right after your search box div -->
+<!-- Replace the existing text-size-controls div with this -->
+<div class="text-size-controls">
+    <button class="text-size-btn" data-size="90" title="Smaller text">A-</button>
+    <button class="text-size-btn" data-size="100" title="Normal text">A</button>
+    <button class="text-size-btn" data-size="120" title="Larger text">A+</button>
+</div>
+
+    <!-- Replace the existing export button -->
+<div class="action-buttons">
+    <button id="clearButton" class="action-btn clear-btn">
+        Clear All Checks
+    </button>
+    <div class="export-buttons flex gap-2">
+        <button class="action-btn export-btn" onclick="exportProgress()">
+            📄 Export as Text
+        </button>
+        <button class="action-btn export-btn" onclick="exportProgressAsPDF()">
+            📑 Export as PDF
+        </button>
+        <!-- Add this inside your .export-buttons div -->
+        <button class="action-btn export-btn" onclick="exportRevisionProgress()">
+            🔁 Export Revision Progress
+        </button>
+    </div>
+</div>
+
+    
+
+    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+        <h1 class="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-900 to-blue-700 bg-clip-text text-transparent">
+            🚀 Your AI/ML & Data Science Learning Journey
+        </h1>
+
+    
+        <!-- Motivation Quote Section -->
+        <div class="bg-gray-900 text-white p-6 rounded-lg mb-8 transform hover:-translate-y-1 transition-transform duration-300">
+            <blockquote class="text-lg italic">
+                "The only way to learn is by doing. Start small, stay consistent, and keep building."
+            </blockquote>
+            <p class="text-right mt-2 text-gray-400">— Every Successful Data Scientist</p>
+        </div>
+    
+        <!-- Track Your Progress Text -->
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Track Your Progress</h2>
+            <p class="text-gray-600">Check off items as you complete them. Your progress is automatically saved.</p>
+        </div>
+    
+        <hr class="my-8 border-gray-300">
+
+    <!-- Add this right after the search-box div and before the content -->
+<div class="progress-circle-container">
+    <svg class="progress-circle" viewBox="0 0 100 100">
+        <!-- Background circle -->
+        <circle class="progress-circle-bg" 
+                cx="50" cy="50" r="45" 
+                fill="none" 
+                stroke="#edf2f7" 
+                stroke-width="8"/>
+        <!-- Progress circle -->
+        <circle class="progress-circle-progress" 
+                cx="50" cy="50" r="45" 
+                fill="none" 
+                stroke="#4299e1" 
+                stroke-width="8" 
+                stroke-linecap="round"
+                transform="rotate(-90 50 50)"/>
+    </svg>
+    <div class="progress-text">
+        <div class="progress-percentage">0%</div>
+        <div class="progress-label">Completed</div>
+    </div>
+</div>
+
+<!-- Theme toggle button -->
+<button class="theme-toggle" aria-label="Toggle dark mode">
+    <span class="light-icon">🌞</span>
+    <span class="dark-icon" style="display: none;">🌙</span>
+</button>
+
+<!-- Celebration container -->
+<div class="celebration" id="celebration"></div>
+    <hr class="my-8 border-gray-300">
+
+        <section id="phase-1">
+
+            <div class="revision-phase-tag" style="font-size:0.95rem; color:var(--text-secondary); font-weight:600; margin: 0.5rem 0 1.5rem auto; text-align:right;">
+                Revision
+            </div>
+
+            <h2>🎯 Phase 1: Foundation</h2>
+            <h3>1. Programming & Software Engineering Fundamentals (Python Focus)</h3>
+                <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s1t1"><label for="p1s1t1"><strong>Python Basics:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t1_1"><label for="p1s1t1_1">Data Types (int, float, str, bool, list, tuple, dict, set)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t1_2"><label for="p1s1t1_2">Control Flow (if/else, loops: for/while)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t1_3"><label for="p1s1t1_3">Functions (definition, arguments, return values, scope)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t1_4"><label for="p1s1t1_4">File I/O (reading/writing files)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t1_5"><label for="p1s1t1_5">Error Handling (try/except/finally)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s1t2"><label for="p1s1t2"><strong>Python Intermediate:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t2_1"><label for="p1s1t2_1">Object-Oriented Programming (Classes, objects, inheritance, polymorphism)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t2_2"><label for="p1s1t2_2">Data Structures (beyond basics: collections module, heapq)</label></li>
+    
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t2_3"><label for="p1s1t2_3">List Comprehensions, Dictionary Comprehensions, Generators</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t2_4"><label for="p1s1t2_4">Decorators</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t2_5"><label for="p1s1t2_5">Context Managers (`with` statement)</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p1s1t3"><label for="p1s1t3"><strong>Python Ecosystem & Best Practices:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t3_1"><label for="p1s1t3_1">Environment Management (`venv`, `conda`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t3_2"><label for="p1s1t3_2">Package Management (`pip`, `requirements.txt`, `environment.yml`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t3_3"><label for="p1s1t3_3">Modules and Packages (imports, structuring projects)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t3_4"><label for="p1s1t3_4">Basic Testing (`unittest`, `pytest`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t3_5"><label for="p1s1t3_5">PEP 8 Style Guide</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p1s1t4"><label for="p1s1t4"><strong>Version Control:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t4_1"><label for="p1s1t4_1">Git Basics (init, add, commit, status, log, branch, checkout, merge)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t4_2"><label for="p1s1t4_2">Remote Repositories (GitHub/GitLab/Bitbucket: clone, push, pull, fetch)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t4_3"><label for="p1s1t4_3">Collaboration (Pull Requests, resolving merge conflicts)</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p1s1t5"><label for="p1s1t5"><strong>Command Line Basics:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t5_1"><label for="p1s1t5_1">Navigating filesystem (`cd`, `ls`, `pwd`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t5_2"><label for="p1s1t5_2">File manipulation (`cp`, `mv`, `rm`, `mkdir`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s1t5_3"><label for="p1s1t5_3">Basic commands (`grep`, `find`, `awk`, `sed` - awareness)</label></li>
+                </ul>
+            </ul>
+
+
+            <h3>2. Mathematical Foundations</h3>
+             <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s2t1"><label for="p1s2t1"><strong>Linear Algebra:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_1"><label for="p1s2t1_1">Vectors and Spaces (operations, norms, dot products)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_2"><label for="p1s2t1_2">Matrices (operations, transpose, inverse, determinant)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_3"><label for="p1s2t1_3">Linear Equations Systems</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_4"><label for="p1s2t1_4">Eigenvalues and Eigenvectors</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_5"><label for="p1s2t1_5">Singular Value Decomposition (SVD)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t1_6" disabled><label for="p1s2t1_6"><em>Tools:</em> NumPy for practical application</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s2t2"><label for="p1s2t2"><strong>Calculus:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t2_1"><label for="p1s2t2_1">Derivatives and Rules (power, product, quotient, chain rule)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t2_2"><label for="p1s2t2_2">Partial Derivatives</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t2_3"><label for="p1s2t2_3">Gradients</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t2_4"><label for="p1s2t2_4">Integrals (basic understanding)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t2_5" disabled><label for="p1s2t2_5"><em>Concept:</em> Relation to optimization (gradient descent)</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p1s2t3"><label for="p1s2t3"><strong>Probability & Statistics:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_1"><label for="p1s2t3_1">Descriptive Statistics (mean, median, mode, variance, std dev, percentiles)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_2"><label for="p1s2t3_2">Probability Basics (events, sample spaces, conditional probability, Bayes' Theorem)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_3"><label for="p1s2t3_3">Probability Distributions (Uniform, Normal/Gaussian, Binomial, Poisson, Exponential)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_4"><label for="p1s2t3_4">Inferential Statistics (Hypothesis Testing, p-values, Confidence Intervals, A/B testing concepts)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_5"><label for="p1s2t3_5">Correlation vs. Causation</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t3_6" disabled><label for="p1s2t3_6"><em>Tools:</em> SciPy.stats, Statsmodels</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p1s2t4"><label for="p1s2t4"><strong>Optimization Basics:</strong></label></li>
+                 <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t4_1"><label for="p1s2t4_1">Concept of Loss Functions</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t4_2"><label for="p1s2t4_2">Gradient Descent (Batch, Stochastic, Mini-batch)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s2t4_3"><label for="p1s2t4_3">Learning Rate concepts</label></li>
+                </ul>
+            </ul>
+
+            <h3>3. Core Data Science Libraries</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s3t1"><label for="p1s3t1"><strong>NumPy:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t1_1"><label for="p1s3t1_1">Ndarrays (creation, indexing, slicing)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t1_2"><label for="p1s3t1_2">Vectorized Operations (Universal Functions - ufuncs)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t1_3"><label for="p1s3t1_3">Broadcasting</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t1_4"><label for="p1s3t1_4">Linear Algebra module (`np.linalg`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t1_5"><label for="p1s3t1_5">Random number generation</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s3t2"><label for="p1s3t2"><strong>Pandas:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_1"><label for="p1s3t2_1">Series and DataFrame (creation, indexing - `loc`, `iloc`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_2"><label for="p1s3t2_2">Data Loading/Saving (CSV, Excel, JSON, SQL)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_3"><label for="p1s3t2_3">Data Cleaning (handling missing values - `isnull`, `dropna`, `fillna`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_4"><label for="p1s3t2_4">Data Transformation (applying functions, mapping)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_5"><label for="p1s3t2_5">Grouping and Aggregation (`groupby`, `agg`, `pivot_table`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_6"><label for="p1s3t2_6">Merging and Joining (`merge`, `join`, `concat`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t2_7"><label for="p1s3t2_7">Time Series basics (`datetime` objects, resampling)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s3t3"><label for="p1s3t3"><strong>Data Visualization:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t3_1"><label for="p1s3t3_1"><strong>Matplotlib:</strong> Basic plots (line, scatter, bar, histogram), Subplots, Customization (labels, titles, legends)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t3_2"><label for="p1s3t3_2"><strong>Seaborn:</strong> Statistical plots (distribution plots, categorical plots, relationship plots, regression plots), Heatmaps, Pairplots</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s3t3_3"><label for="p1s3t3_3"><strong>Plotly (Optional but recommended):</strong> Interactive plots, Dashboards basics</label></li>
+                </ul>
+            </ul>
+
+             <h3>4. SQL & Databases</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s4t1"><label for="p1s4t1"><strong>SQL Fundamentals:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_1"><label for="p1s4t1_1">`SELECT` statements (filtering with `WHERE`, sorting with `ORDER BY`, limiting with `LIMIT`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_2"><label for="p1s4t1_2">`JOIN` operations (INNER, LEFT, RIGHT, FULL OUTER)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_3"><label for="p1s4t1_3">Aggregation (`GROUP BY`, `COUNT`, `SUM`, `AVG`, `MAX`, `MIN`, `HAVING`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_4"><label for="p1s4t1_4">Subqueries (in `SELECT`, `FROM`, `WHERE`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_5"><label for="p1s4t1_5">Window Functions (`ROW_NUMBER`, `RANK`, `DENSE_RANK`, `LAG`, `LEAD`, aggregate functions over partitions)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_6"><label for="p1s4t1_6">Common Table Expressions (CTEs - `WITH` clause)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t1_7"><label for="p1s4t1_7">Basic Data Types and `CREATE TABLE` (understanding)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s4t2"><label for="p1s4t2"><strong>Relational Databases (Choose one):</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t2_1"><label for="p1s4t2_1">PostgreSQL (Setup, basic administration, psql client)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t2_2"><label for="p1s4t2_2">MySQL (Setup, basic administration, mysql client)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t2_3"><label for="p1s4t2_3">Understanding Indexes (basics)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s4t3"><label for="p1s4t3"><strong>NoSQL Awareness:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t3_1"><label for="p1s4t3_1">Concept of NoSQL (Document, Key-Value, Columnar, Graph)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s4t3_2"><label for="p1s4t3_2">MongoDB Basics (Collections, Documents, basic queries) - Optional</label></li>
+                </ul>
+            </ul>
+
+            <h3>5. Data Preprocessing & Exploratory Data Analysis (EDA)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s5t1"><label for="p1s5t1"><strong>Data Cleaning:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t1_1"><label for="p1s5t1_1">Identifying and Handling Missing Data (imputation strategies: mean, median, mode, model-based)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t1_2"><label for="p1s5t1_2">Identifying and Handling Outliers (visualization, statistical methods like IQR, Z-score)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t1_3"><label for="p1s5t1_3">Data Type Conversions</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t1_4"><label for="p1s5t1_4">Handling Duplicates</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s5t2"><label for="p1s5t2"><strong>Feature Encoding:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t2_1"><label for="p1s5t2_1">Categorical Features: One-Hot Encoding, Label Encoding, Ordinal Encoding, (Awareness of: Target Encoding, Binary Encoding)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s5t3"><label for="p1s5t3"><strong>Feature Scaling:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t3_1"><label for="p1s5t3_1">Standardization (Z-score normalization)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t3_2"><label for="p1s5t3_2">Normalization (Min-Max scaling)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s5t4"><label for="p1s5t4"><strong>Exploratory Data Analysis (EDA):</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t4_1"><label for="p1s5t4_1">Univariate Analysis (histograms, box plots, density plots, summary statistics)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t4_2"><label for="p1s5t4_2">Bivariate Analysis (scatter plots, correlation matrices, grouped analysis)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t4_3"><label for="p1s5t4_3">Visualizing relationships and patterns</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s5t4_4"><label for="p1s5t4_4">Formulating hypotheses based on data</label></li>
+                </ul>
+            </ul>
+
+             <h3>6. Feature Engineering</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s6t1"><label for="p1s6t1"><strong>Feature Creation:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t1_1"><label for="p1s6t1_1">Interaction Terms</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t1_2"><label for="p1s6t1_2">Polynomial Features</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t1_3"><label for="p1s6t1_3">Binning/Discretization</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t1_4"><label for="p1s6t1_4">Domain-specific feature creation (e.g., extracting date parts)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s6t2"><label for="p1s6t2"><strong>Feature Selection:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t2_1"><label for="p1s6t2_1">Filter Methods (correlation, Chi-Squared, ANOVA F-value)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t2_2"><label for="p1s6t2_2">Wrapper Methods (Recursive Feature Elimination - RFE)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t2_3"><label for="p1s6t2_3">Embedded Methods (Lasso/Ridge regularization importance, Tree-based importance)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s6t3"><label for="p1s6t3"><strong>Dimensionality Reduction:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t3_1"><label for="p1s6t3_1">Principal Component Analysis (PCA) - Theory and Implementation</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t3_2"><label for="p1s6t3_2">Linear Discriminant Analysis (LDA) - Theory and Implementation (for supervised tasks)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t3_3"><label for="p1s6t3_3">t-Distributed Stochastic Neighbor Embedding (t-SNE) - For visualization</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s6t3_4"><label for="p1s6t3_4">Uniform Manifold Approximation and Projection (UMAP) - For visualization/reduction</label></li>
+                </ul>
+            </ul>
+
+            <h3>7. Classical Machine Learning (Scikit-learn Focus)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s7t1"><label for="p1s7t1"><strong>Supervised Learning:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_1"><label for="p1s7t1_1">Linear Regression (Assumptions, implementation)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_2"><label for="p1s7t1_2">Logistic Regression (Sigmoid, LogLoss, implementation)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_3"><label for="p1s7t1_3">Support Vector Machines (SVM) (Kernels, C parameter, gamma)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_4"><label for="p1s7t1_4">k-Nearest Neighbors (KNN) (Distance metrics, K value)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_5"><label for="p1s7t1_5">Decision Trees (Information Gain, Gini Impurity, Pruning)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_6"><label for="p1s7t1_6">Ensemble Methods:</label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p1s7t1_6_1"><label for="p1s7t1_6_1">Bagging: Random Forests</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p1s7t1_6_2"><label for="p1s7t1_6_2">Boosting: AdaBoost, Gradient Boosting Machines (GBM)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p1s7t1_6_3"><label for="p1s7t1_6_3">Advanced Boosting: XGBoost, LightGBM, CatBoost (understanding key differences)</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t1_7"><label for="p1s7t1_7">Naive Bayes (Gaussian, Multinomial)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s7t2"><label for="p1s7t2"><strong>Unsupervised Learning:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t2_1"><label for="p1s7t2_1">Clustering: K-Means (Centroids, Elbow method, Silhouette score), DBSCAN (eps, min_samples), Hierarchical Clustering (Dendrograms)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t2_2"><label for="p1s7t2_2">Dimensionality Reduction (Revisit PCA, LDA as ML techniques)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s7t3"><label for="p1s7t3"><strong>Model Evaluation & Selection:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t3_1"><label for="p1s7t3_1">Metrics:</label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p1s7t3_1_1"><label for="p1s7t3_1_1">Regression: MAE, MSE, RMSE, R-squared</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p1s7t3_1_2"><label for="p1s7t3_1_2">Classification: Accuracy, Precision, Recall, F1-Score, AUC-ROC Curve, Confusion Matrix, LogLoss</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t3_2"><label for="p1s7t3_2">Cross-Validation: K-Fold, Stratified K-Fold, Leave-One-Out (LOO)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t3_3"><label for="p1s7t3_3">Bias-Variance Tradeoff</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p1s7t4"><label for="p1s7t4"><strong>Hyperparameter Tuning:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t4_1"><label for="p1s7t4_1">Grid Search (`GridSearchCV`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t4_2"><label for="p1s7t4_2">Random Search (`RandomizedSearchCV`)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p1s7t4_3"><label for="p1s7t4_3">Awareness of Bayesian Optimization</label></li>
+                </ul>
+            </ul>
+
+            <h3>7.1 Machine Learning from Scratch (with NumPy)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s8t1"><label for="p2s8t1"><strong>Implement Core Algorithms:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_1"><label for="p2s8t1_1">Linear Regression (with Gradient Descent)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_2"><label for="p2s8t1_2">Logistic Regression (with Gradient Descent)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_3"><label for="p2s8t1_3">K-Nearest Neighbors (KNN)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_4"><label for="p2s8t1_4">Naive Bayes</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_5"><label for="p2s8t1_5">Decision Tree (basic version)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_6"><label for="p2s8t1_6">K-Means Clustering</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s8t1_7"><label for="p2s8t1_7">Basic Neural Network (Feedforward with backpropagation) - Optional but highly beneficial</label></li>
+                </ul>
+            </ul>
+            
+
+            <div class="reward-section">
+                <strong>🏆 Foundation Phase Reward:</strong>
+                <input type="text" placeholder="Define your reward here (e.g., New book, weekend trip...)" class="mt-1 block w-full p-2 border border-yellow-400 rounded bg-white placeholder-gray-400 text-yellow-700">
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-300">
+
+        <section id="phase-2">
+            <h2>🚀 Phase 2: Expansion (Deepening Expertise & Specialization)</h2>
+            <p class="phase-goal">Goal: Implement algorithms from scratch, dive deep into DL/NLP/CV, build complex projects, and understand data pipelines.</p>
+            
+            <h3>8. Deep Learning (Complete Roadmap)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="dl1"><label for="dl1"><strong>1. Deep Learning Fundamentals</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl1_1"><label for="dl1_1"><strong>1.1 Introduction to Deep Learning</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_1_1"><label for="dl1_1_1">Overview of Deep Learning vs Machine Learning</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_1_2"><label for="dl1_1_2">Types of problems Deep Learning solves (e.g., Computer Vision, NLP)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_1_3"><label for="dl1_1_3">Deep Learning Frameworks (TensorFlow, PyTorch, Keras)</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl1_2"><label for="dl1_2"><strong>1.2 Neural Networks Basics</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_2_1"><label for="dl1_2_1">Perceptron: The simplest form of a neural network</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_2_2"><label for="dl1_2_2">Activation Functions: Sigmoid, ReLU, Tanh, Softmax</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_2_3"><label for="dl1_2_3">Architecture: Layers (input, hidden, output), neurons, weights</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl1_2_4"><label for="dl1_2_4">Forward Propagation & Backpropagation</label></li>
+                    </ul>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="dl2"><label for="dl2"><strong>2. Core Deep Learning Algorithms</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_1"><label for="dl2_1"><strong>2.1 Feedforward Neural Networks (FNN)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_1_1"><label for="dl2_1_1">Structure of FNN</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_1_2"><label for="dl2_1_2">Activation Functions in FNN</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_1_3"><label for="dl2_1_3">Loss Functions (e.g., Cross-Entropy, MSE)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_1_4"><label for="dl2_1_4">Training: Gradient Descent, Backpropagation</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_2"><label for="dl2_2"><strong>2.2 Convolutional Neural Networks (CNN)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_2_1"><label for="dl2_2_1">Convolution Layer: Filter, kernel, stride, padding</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_2_2"><label for="dl2_2_2">Pooling Layer: Max pooling, average pooling</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_2_3"><label for="dl2_2_3">Fully Connected Layer</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_2_4"><label for="dl2_2_4">Classic CNN Architectures: LeNet, AlexNet, VGG, ResNet, Inception</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_2_5"><label for="dl2_2_5">Transfer Learning: Using pre-trained models (e.g., VGG16, ResNet)</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_3"><label for="dl2_3"><strong>2.3 Recurrent Neural Networks (RNN)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_1"><label for="dl2_3_1">RNN architecture</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_2"><label for="dl2_3_2">Vanishing Gradient Problem</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_3"><label for="dl2_3_3">Long Short-Term Memory (LSTM)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_4"><label for="dl2_3_4">Gated Recurrent Unit (GRU)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_5"><label for="dl2_3_5">Bidirectional RNNs</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_3_6"><label for="dl2_3_6">Applications: Time series forecasting, text generation</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_4"><label for="dl2_4"><strong>2.4 Autoencoders</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_4_1"><label for="dl2_4_1">Encoder-Decoder Architecture</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_4_2"><label for="dl2_4_2">Variational Autoencoders (VAE)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_4_3"><label for="dl2_4_3">Applications: Dimensionality reduction, anomaly detection</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_5"><label for="dl2_5"><strong>2.5 Generative Adversarial Networks (GANs)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_5_1"><label for="dl2_5_1">Generator vs Discriminator</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_5_2"><label for="dl2_5_2">Training GANs</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_5_3"><label for="dl2_5_3">Types of GANs: DCGAN, WGAN, CycleGAN</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_5_4"><label for="dl2_5_4">Applications: Image generation, style transfer</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_6"><label for="dl2_6"><strong>2.6 Transformers and Attention Mechanisms</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_6_1"><label for="dl2_6_1">Self-Attention: Calculating attention scores</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_6_2"><label for="dl2_6_2">Transformer Architecture: Encoder-decoder structure</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_6_3"><label for="dl2_6_3">BERT, GPT, T5: Pre-trained transformer models</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_6_4"><label for="dl2_6_4">Applications: NLP tasks (e.g., text classification, summarization)</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_7"><label for="dl2_7"><strong>2.7 Reinforcement Learning (RL)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_1"><label for="dl2_7_1">Markov Decision Processes (MDP)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_2"><label for="dl2_7_2">Q-Learning: Q-values, epsilon-greedy strategy</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_3"><label for="dl2_7_3">Deep Q-Networks (DQN)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_4"><label for="dl2_7_4">Policy Gradient Methods</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_5"><label for="dl2_7_5">Actor-Critic Models</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_7_6"><label for="dl2_7_6">Applications: Game AI, robotics</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl2_8"><label for="dl2_8"><strong>2.8 Capsule Networks (CapsNet)</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_8_1"><label for="dl2_8_1">Capsule Layers: Dynamic and static capsules</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_8_2"><label for="dl2_8_2">Routing by Agreement</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl2_8_3"><label for="dl2_8_3">Applications: Image classification with spatial hierarchies</label></li>
+                    </ul>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="dl3"><label for="dl3"><strong>3. Advanced Deep Learning Techniques</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_1"><label for="dl3_1"><strong>3.1 Transfer Learning</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_1_1"><label for="dl3_1_1">Fine-tuning pre-trained models</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_1_2"><label for="dl3_1_2">Freezing layers: When to freeze layers during transfer learning</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_1_3"><label for="dl3_1_3">Application: Image classification with pre-trained CNN models</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_2"><label for="dl3_2"><strong>3.2 Data Augmentation</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_2_1"><label for="dl3_2_1">Image Augmentation: Rotation, flipping, scaling, cropping</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_2_2"><label for="dl3_2_2">Text Augmentation: Synonym replacement, back translation</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_3"><label for="dl3_3"><strong>3.3 Regularization Techniques</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_3_1"><label for="dl3_3_1">Dropout: Randomly disabling neurons</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_3_2"><label for="dl3_3_2">Batch Normalization: Normalizing layer inputs</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_3_3"><label for="dl3_3_3">L1/L2 Regularization: Penalizing weights</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_4"><label for="dl3_4"><strong>3.4 Hyperparameter Tuning</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_4_1"><label for="dl3_4_1">Grid Search: Exhaustive search of hyperparameters</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_4_2"><label for="dl3_4_2">Random Search: Randomly selecting hyperparameters</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_4_3"><label for="dl3_4_3">Bayesian Optimization: Optimizing hyperparameters using a probabilistic model (e.g., Optuna, Hyperopt)</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_5"><label for="dl3_5"><strong>3.5 Advanced Optimizers</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_5_1"><label for="dl3_5_1">Adam: Adaptive learning rates</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_5_2"><label for="dl3_5_2">RMSProp: Decaying learning rate</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_5_3"><label for="dl3_5_3">AdaGrad: Learning rate adjustment per parameter</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="dl3_6"><label for="dl3_6"><strong>3.6 Experiment Tracking & Logging</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_6_1"><label for="dl3_6_1">TensorBoard: Visualizing training progress</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_6_2"><label for="dl3_6_2">Weights & Biases (WandB): Tracking experiments, visualizing metrics</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="dl3_6_3"><label for="dl3_6_3">MLflow: Tracking experiments and managing models</label></li>
+                    </ul>
+                </ul>
+            </ul>
+            
+             <h3>9. Deep Learning (Choose PyTorch *or* TensorFlow/Keras and go deep)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s9t1"><label for="p2s9t1"><strong>Framework Fundamentals:</strong></label></li>
+                <ul>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_1"><label for="p2s9t1_1">Tensors and Operations</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_2"><label for="p2s9t1_2">Automatic Differentiation (`autograd` / `tf.GradientTape`)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_3"><label for="p2s9t1_3">Building Models (Sequential API, Functional API / `nn.Module`)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_4"><label for="p2s9t1_4">Defining Layers (Dense, Conv2D, MaxPool, LSTM, GRU, Embedding, etc.)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_5"><label for="p2s9t1_5">Loss Functions (CrossEntropy, MSE, etc.)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_6"><label for="p2s9t1_6">Optimizers (Adam, SGD, RMSprop)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_7"><label for="p2s9t1_7">Training Loops (writing custom loops, using `fit`/`Trainer`)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t1_8"><label for="p2s9t1_8">GPU Usage</label></li>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p2s9t2"><label for="p2s9t2"><strong>Neural Network Architectures:</strong></label></li>
+                <ul>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t2_1"><label for="p2s9t2_1">Multilayer Perceptrons (MLPs) / Feedforward Networks</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t2_2"><label for="p2s9t2_2">Convolutional Neural Networks (CNNs):</label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t2_2_1"><label for="p2s9t2_2_1">Convolution Operation, Pooling, Padding, Stride</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t2_2_2"><label for="p2s9t2_2_2">Classic Architectures (LeNet, AlexNet, VGG, ResNet, Inception - understand key ideas)</label></li>
+                    </ul>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t2_3"><label for="p2s9t2_3">Recurrent Neural Networks (RNNs):</label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t2_3_1"><label for="p2s9t2_3_1">Vanishing/Exploding Gradients problem</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t2_3_2"><label for="p2s9t2_3_2">Long Short-Term Memory (LSTM)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t2_3_3"><label for="p2s9t2_3_3">Gated Recurrent Units (GRU)</label></li>
+                    </ul>
+                </ul>
+                 <li class="task-list-item"><input type="checkbox" id="p2s9t3"><label for="p2s9t3"><strong>Advanced Deep Learning Techniques:</strong></label></li>
+                <ul>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t3_1"><label for="p2s9t3_1">Transfer Learning (using pre-trained models, fine-tuning)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t3_2"><label for="p2s9t3_2">Data Augmentation (for images and text)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t3_3"><label for="p2s9t3_3">Regularization (Dropout, L1/L2, Batch Normalization)</label></li>
+                   <li class="task-list-item"><input type="checkbox" id="p2s9t3_4"><label for="p2s9t3_4"><strong>Advanced Hyperparameter Tuning & Experiment Tracking:</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t3_4_1"><label for="p2s9t3_4_1">Optuna / Hyperopt (Bayesian Optimization)</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p2s9t3_4_2"><label for="p2s9t3_4_2">Weights & Biases (WandB) / TensorBoard (Logging and visualization)</label></li>
+                    </ul>
+                </ul>
+            </ul>
+
+            <h3>10. Natural Language Processing (NLP)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s10t1"><label for="p2s10t1"><strong>Text Preprocessing Techniques:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t1_1"><label for="p2s10t1_1">Tokenization (Word, Sentence)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t1_2"><label for="p2s10t1_2">Normalization (Lowercasing, removing punctuation/numbers)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t1_3"><label for="p2s10t1_3">Stop Word Removal</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t1_4"><label for="p2s10t1_4">Stemming vs. Lemmatization</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t1_5" disabled><label for="p2s10t1_5"><em>Tools:</em> NLTK, spaCy</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s10t2"><label for="p2s10t2"><strong>Feature Extraction for Text:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t2_1"><label for="p2s10t2_1">Bag-of-Words (BoW)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t2_2"><label for="p2s10t2_2">Term Frequency-Inverse Document Frequency (TF-IDF)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t2_3" disabled><label for="p2s10t2_3"><em>Tools:</em> Scikit-learn (`CountVectorizer`, `TfidfVectorizer`)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s10t3"><label for="p2s10t3"><strong>Word Embeddings:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t3_1"><label for="p2s10t3_1">Concept and intuition</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t3_2"><label for="p2s10t3_2">Word2Vec (CBOW, Skip-gram)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t3_3"><label for="p2s10t3_3">GloVe</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t3_4"><label for="p2s10t3_4">FastText</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t3_5" disabled><label for="p2s10t3_5"><em>Tools:</em> Gensim, spaCy</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s10t4"><label for="p2s10t4"><strong>Sequence Models for NLP:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t4_1"><label for="p2s10t4_1">Using RNNs/LSTMs/GRUs for tasks like text classification, sentiment analysis</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s10t5"><label for="p2s10t5"><strong>Attention Mechanisms & Transformers:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t5_1"><label for="p2s10t5_1">Concept of Attention</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t5_2"><label for="p2s10t5_2">Transformer Architecture (Self-Attention, Multi-Head Attention, Positional Encoding)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t5_3"><label for="p2s10t5_3">BERT (Architecture, Pre-training/Fine-tuning)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t5_4"><label for="p2s10t5_4">GPT family awareness (Decoder-only architecture)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s10t5_5" disabled><label for="p2s10t5_5"><em>Tools:</em> Hugging Face `transformers` library (Pipelines, Models, Tokenizers)</label></li>
+                </ul>
+            </ul>
+
+            <h3>11. Computer Vision (CV)</h3>
+             <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s11t1"><label for="p2s11t1"><strong>Image Processing Basics:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t1_1"><label for="p2s11t1_1">Reading/Writing Images, Color Spaces (RGB, Grayscale, HSV)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t1_2"><label for="p2s11t1_2">Basic Manipulations (Resizing, Cropping, Rotation)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t1_3"><label for="p2s11t1_3">Filtering and Thresholding</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t1_4" disabled><label for="p2s11t1_4"><em>Tools:</em> OpenCV, Pillow</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s11t2"><label for="p2s11t2"><strong>Feature Detection & Description:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t2_1"><label for="p2s11t2_1">Concepts (SIFT, SURF, ORB - awareness)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s11t3"><label for="p2s11t3"><strong>CNNs for Computer Vision Tasks:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t3_1"><label for="p2s11t3_1">Image Classification (using architectures from DL section)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t3_2"><label for="p2s11t3_2">Object Detection (Concepts: Bounding Boxes; Architectures: YOLO, SSD - basic understanding)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s11t3_3"><label for="p2s11t3_3">Image Segmentation (Concepts: Pixel-level classification; Architectures: U-Net - basic understanding)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s11t4"><label for="p2s11t4"><strong>Image Augmentation Techniques</strong></label></li>
+            </ul>
+
+             <h3>12. Time Series Analysis</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s12t1"><label for="p2s12t1"><strong>Time Series Concepts:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t1_1"><label for="p2s12t1_1">Stationarity (Concept, checking: ADF test)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t1_2"><label for="p2s12t1_2">Trend, Seasonality, Cyclicality, Noise</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t1_3"><label for="p2s12t1_3">Autocorrelation (ACF) and Partial Autocorrelation (PACF) plots</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s12t2"><label for="p2s12t2"><strong>Classical Time Series Models:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t2_1"><label for="p2s12t2_1">Moving Averages</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t2_2"><label for="p2s12t2_2">Exponential Smoothing (Simple, Holt's, Holt-Winters)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t2_3"><label for="p2s12t2_3">ARIMA / SARIMA (understanding p, d, q parameters)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t2_4" disabled><label for="p2s12t2_4"><em>Tools:</em> Statsmodels</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s12t3"><label for="p2s12t3"><strong>Modern Time Series Tools:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t3_1"><label for="p2s12t3_1">Facebook Prophet (Decomposition, handling holidays)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s12t4"><label for="p2s12t4"><strong>Deep Learning for Time Series:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s12t4_1"><label for="p2s12t4_1">Using LSTMs/GRUs for forecasting</label></li>
+                </ul>
+            </ul>
+
+            <h3>13. Data Gathering & Pipelines</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s13t1"><label for="p2s13t1"><strong>Web Scraping:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t1_1"><label for="p2s13t1_1">HTML Basics (for parsing)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t1_2"><label for="p2s13t1_2">BeautifulSoup (parsing HTML/XML)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t1_3"><label for="p2s13t1_3">Scrapy (framework for large-scale scraping) - Optional</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t1_4"><label for="p2s13t1_4">Selenium (browser automation for dynamic sites) - Optional</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t1_5"><label for="p2s13t1_5">Ethics and Legality (robots.txt, terms of service)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s13t2"><label for="p2s13t2"><strong>Working with APIs:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t2_1"><label for="p2s13t2_1">RESTful APIs (Concepts: HTTP methods, status codes, JSON)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t2_2"><label for="p2s13t2_2">`requests` library in Python</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t2_3"><label for="p2s13t2_3">Authentication (API Keys, OAuth)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t2_4"><label for="p2s13t2_4">GraphQL basics (awareness)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s13t3"><label for="p2s13t3"><strong>Data Pipelines / ETL (Basic Concepts):</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t3_1"><label for="p2s13t3_1">Concept of ETL/ELT</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t3_2"><label for="p2s13t3_2">Workflow Orchestration Tools (Awareness): Apache Airflow, Prefect, Dagster</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s13t3_3"><label for="p2s13t3_3">Building simple data pipelines (e.g., script to fetch data, process, store)</label></li>
+                </ul>
+            </ul>
+            
+
+            <div class="reward-section">
+                <strong>🏆 Expansion Phase Reward:</strong>
+                <input type="text" placeholder="Define your reward here (e.g., Tech gadget, online course...)" class="mt-1 block w-full p-2 border border-yellow-400 rounded bg-white placeholder-gray-400 text-yellow-700">
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-300">
+
+        <section id="phase-3">
+            <h2>🔬 Phase 3: Mastery (Productionization, Scale & Specialization)</h2>
+            <p class="phase-goal">Goal: Deploy models reliably, handle large-scale data, design ML systems, master advanced techniques, and stay current.</p>
+
+            <h3>15. MLOps & Model Deployment</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p3s15t1"><label for="p3s15t1"><strong>Model Serving:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t1_1"><label for="p3s15t1_1">Flask / FastAPI: For building prediction APIs</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t1_2"><label for="p3s15t1_2">TensorFlow Serving: For serving TensorFlow models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t1_3"><label for="p3s15t1_3">TorchServe: For serving PyTorch models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t1_4"><label for="p3s15t1_4">ONNX Runtime: For models in the ONNX format</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t1_5"><label for="p3s15t1_5">MLflow: For managing models, including serving them as APIs</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t2"><label for="p3s15t2"><strong>Containerization:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t2_1"><label for="p3s15t2_1">Docker: Containerization platform for packaging ML models and APIs</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t2_2"><label for="p3s15t2_2">Docker Compose: For managing multi-container Docker applications</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t2_3"><label for="p3s15t2_3">Kubernetes: Orchestration tool for scaling and managing containers</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t3"><label for="p3s15t3"><strong>Orchestration (Workflow Automation):</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t3_1"><label for="p3s15t3_1">Apache Airflow: For creating, scheduling, and monitoring workflows</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t3_2"><label for="p3s15t3_2">Prefect: Dataflow automation and scheduling</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t3_3"><label for="p3s15t3_3">Dagster: Data pipeline orchestration tool</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t4"><label for="p3s15t4"><strong>CI/CD for ML:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t4_1"><label for="p3s15t4_1">GitHub Actions: Automating ML workflows from code to deployment</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t4_2"><label for="p3s15t4_2">GitLab CI: Continuous integration/deployment pipelines</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t4_3"><label for="p3s15t4_3">Jenkins: Automation server for building pipelines</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t4_4"><label for="p3s15t4_4">CircleCI: Continuous integration and delivery for apps</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t5"><label for="p3s15t5"><strong>Monitoring & Logging:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t5_1"><label for="p3s15t5_1">Prometheus: Collects and stores metrics</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t5_2"><label for="p3s15t5_2">Grafana: Visualizes monitoring data (integrates with Prometheus)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t5_3"><label for="p3s15t5_3">ELK Stack (Elasticsearch, Logstash, Kibana): Logging and monitoring system</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t5_4"><label for="p3s15t5_4">Datadog: Monitoring for cloud-scale applications, including ML models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t5_5"><label for="p3s15t5_5">New Relic: Application performance monitoring (APM)</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t6"><label for="p3s15t6"><strong>Cloud Platforms for ML Deployment:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t6_1"><label for="p3s15t6_1"><strong>Google Cloud (GCP):</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_1_1"><label for="p3s15t6_1_1">Vertex AI: For managing ML lifecycle</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_1_2"><label for="p3s15t6_1_2">Cloud Functions: Serverless functions for APIs</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_1_3"><label for="p3s15t6_1_3">Cloud Storage: Data storage</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_1_4"><label for="p3s15t6_1_4">Compute Engine: Virtual machines for model deployment</label></li>
+                    </ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t6_2"><label for="p3s15t6_2"><strong>Microsoft Azure:</strong></label></li>
+                    <ul>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_2_1"><label for="p3s15t6_2_1">Azure Machine Learning: For end-to-end ML lifecycle management</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_2_2"><label for="p3s15t6_2_2">Azure Functions: Serverless model deployment</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_2_3"><label for="p3s15t6_2_3">Blob Storage: Store models and datasets</label></li>
+                        <li class="task-list-item"><input type="checkbox" id="p3s15t6_2_4"><label for="p3s15t6_2_4">Azure Kubernetes Service (AKS): Kubernetes management service</label></li>
+                    </ul>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t7"><label for="p3s15t7"><strong>Experiment Tracking & Versioning:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t7_1"><label for="p3s15t7_1">MLflow: Tracking experiments, metrics, and models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t7_2"><label for="p3s15t7_2">DVC (Data Version Control): For versioning large datasets and models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t7_3"><label for="p3s15t7_3">Weights & Biases: Tracks experiments, model training, and data</label></li>
+                </ul>
+
+                <li class="task-list-item"><input type="checkbox" id="p3s15t8"><label for="p3s15t8"><strong>Feature Store:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t8_1"><label for="p3s15t8_1">Feast: Open-source feature store for managing ML features</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p3s15t8_2"><label for="p3s15t8_2">Tecton: Managed feature store for consistent features in production</label></li>
+                </ul>
+            </ul>
+        </section>
+
+
+        <hr class="my-8 border-gray-300">
+
+        <section id="phase-4-projects">
+            <h2>🎯 Phase 4: Hands-on Projects Portfolio</h2>
+            <p class="phase-goal">Goal: Build a comprehensive portfolio of practical projects showcasing various ML/DL skills.</p>
+        
+            <h3>1. Machine Learning Algorithms from Scratch (NumPy Only)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t1"><label for="p4s1t1">Linear Regression Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t2"><label for="p4s1t2">Logistic Regression Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t3"><label for="p4s1t3">K-Nearest Neighbors (KNN)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t4"><label for="p4s1t4">Naive Bayes Classifier</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t5"><label for="p4s1t5">Support Vector Machine (SVM)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t6"><label for="p4s1t6">Decision Tree Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t7"><label for="p4s1t7">Random Forest from Scratch</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t8"><label for="p4s1t8">Gradient Boosting Machine (GBM)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t9"><label for="p4s1t9">XGBoost (approximate logic)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t10"><label for="p4s1t10">Perceptron Algorithm</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t11"><label for="p4s1t11">Activation & Loss Functions</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t12"><label for="p4s1t12">Optimizers (GD, Adam, RMSprop)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t13"><label for="p4s1t13">Clustering (K-Means, Hierarchical, DBSCAN)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t14"><label for="p4s1t14">PCA Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t15"><label for="p4s1t15">Moving Averages (SMA & EMA)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t16"><label for="p4s1t16">ARIMA Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s1t17"><label for="p4s1t17">Multi-layer Neural Network</label></li>
+            </ul>
+        
+            <h3>2. Machine Learning Projects 📦</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t1"><label for="p4s2t1">Iris Flower Classification</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t2"><label for="p4s2t2">Titanic Survival Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t3"><label for="p4s2t3">Housing Price Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t4"><label for="p4s2t4">Customer Churn Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t5"><label for="p4s2t5">Custom Linear Regression</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t6"><label for="p4s2t6">Stock Price Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t7"><label for="p4s2t7">Marketing ROI Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t8"><label for="p4s2t8">Retail Sales Forecast</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t9"><label for="p4s2t9">Customer Segmentation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t10"><label for="p4s2t10">Supply Chain Lead Time</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t11"><label for="p4s2t11">Diabetes Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t12"><label for="p4s2t12">Loan Default Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t13"><label for="p4s2t13">Classification with Imbalanced Data</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t14"><label for="p4s2t14">Bias-Variance Simulation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t15"><label for="p4s2t15">Time Series Forecasting (ARIMA)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t16"><label for="p4s2t16">Credit Card Fraud Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t17"><label for="p4s2t17">Multi-Class Classification</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t18"><label for="p4s2t18">Multi-label Classification</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s2t19"><label for="p4s2t19">Anomaly Detection</label></li>
+            </ul>
+        
+            <h3>3. Deep Learning from Scratch 🧠</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t1"><label for="p4s3t1">Perceptron Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t2"><label for="p4s3t2">Custom Activation Functions</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t3"><label for="p4s3t3">Loss Functions Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t4"><label for="p4s3t4">Optimizers (GD, SGD, Adam)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t5"><label for="p4s3t5">Backpropagation Algorithm</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t6"><label for="p4s3t6">Fully Connected Neural Network</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t7"><label for="p4s3t7">Dropout Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t8"><label for="p4s3t8">Batch Normalization</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t9"><label for="p4s3t9">Convolution + Pooling Layers</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t10"><label for="p4s3t10">CNN Architecture</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t11"><label for="p4s3t11">Flatten & Dense Layers</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t12"><label for="p4s3t12">MNIST Classification</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t13"><label for="p4s3t13">RNN/LSTM/GRU Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t14"><label for="p4s3t14">Sequence Classification</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t15"><label for="p4s3t15">Word Embeddings</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t16"><label for="p4s3t16">Attention Mechanism</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t17"><label for="p4s3t17">Transformer Block</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s3t18"><label for="p4s3t18">Training Visualizer</label></li>
+            </ul>
+        
+            <h3>4. Deep Learning/NLP/CV Projects 💡</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t1"><label for="p4s4t1">Neural Network from Scratch</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t2"><label for="p4s4t2">Image Classification System</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t3"><label for="p4s4t3">Real-time Face Recognition</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t4"><label for="p4s4t4">Sentiment Analysis System</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t5"><label for="p4s4t5">Language Model from Scratch</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t6"><label for="p4s4t6">Fine-tune BERT/T5</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t7"><label for="p4s4t7">Prompt Engineering App</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t8"><label for="p4s4t8">RAG-based Search</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t9"><label for="p4s4t9">Hallucination Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t10"><label for="p4s4t10">Reinforcement Learning Game AI</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t11"><label for="p4s4t11">Image Generation (GAN/VAE)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t12"><label for="p4s4t12">Real-time Face Mask Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t13"><label for="p4s4t13">A/B Testing Framework</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t14"><label for="p4s4t14">SHAP/LIME Explainable AI</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t15"><label for="p4s4t15">AI Fairness Toolkit</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t16"><label for="p4s4t16">Text Classification with BERT</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t17"><label for="p4s4t17">Named Entity Recognition</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t18"><label for="p4s4t18">Text Summarization</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t19"><label for="p4s4t19">Question Answering System</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t20"><label for="p4s4t20">Speech-to-Text/Text-to-Speech</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t21"><label for="p4s4t21">Text Generation (GPT-based)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s4t22"><label for="p4s4t22">Word Embeddings Exploration</label></li>
+            </ul>
+        
+            <h3>5. Time Series Projects ⏳</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t1"><label for="p4s5t1">Stock Price Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t2"><label for="p4s5t2">Weather Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t3"><label for="p4s5t3">Energy Consumption Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t4"><label for="p4s5t4">Bitcoin Price Prediction</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t5"><label for="p4s5t5">Time Series Decomposition & Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t6"><label for="p4s5t6">Seasonal Decomposition (STL)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t7"><label for="p4s5t7">ARIMA Time Series Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t8"><label for="p4s5t8">LSTM-based Time Series Forecasting</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t9"><label for="p4s5t9">Prophet Model Implementation</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t10"><label for="p4s5t10">Time Series Anomaly Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t11"><label for="p4s5t11">Demand Forecasting for Retail</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s5t12"><label for="p4s5t12">Predictive Maintenance</label></li>
+            </ul>
+        
+            <h3>6. Text Analysis Projects 📝</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t1"><label for="p4s6t1">Text Classification (Spam Detection)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t2"><label for="p4s6t2">Text Summarization</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t3"><label for="p4s6t3">Named Entity Recognition (NER)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t4"><label for="p4s6t4">Topic Modeling (LDA)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t5"><label for="p4s6t5">Sentiment Analysis on Social Media</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t6"><label for="p4s6t6">Customer Feedback Analysis</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t7"><label for="p4s6t7">Toxic Comment Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t8"><label for="p4s6t8">Text-based Recommendation System</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t9"><label for="p4s6t9">Question Answering System (QnA)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s6t10"><label for="p4s6t10">Text Generation using LSTM/GRU</label></li>
+            </ul>
+        
+            <h3>7. MLOps + Deployment Projects 🚀</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t1"><label for="p4s7t1">AutoML Pipeline</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t2"><label for="p4s7t2">Build AutoML from Scratch</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t3"><label for="p4s7t3">CI/CD with GitHub + Docker</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t4"><label for="p4s7t4">Distributed ML System</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t5"><label for="p4s7t5">Model Versioning (DVC/MLflow)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t6"><label for="p4s7t6">Model Monitoring</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t7"><label for="p4s7t7">Real-time Inference API</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t8"><label for="p4s7t8">Drift Detection</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t9"><label for="p4s7t9">Deploy with Flask/FastAPI/Streamlit</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t10"><label for="p4s7t10">Real-time Speech-to-Text API</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t11"><label for="p4s7t11">Real-time Object Detection API</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t12"><label for="p4s7t12">Deploy NLP Model (BERT) for Inference</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s7t13"><label for="p4s7t13">ML Model API Deployment on Cloud</label></li>
+            </ul>
+        </section>
+
+        <!-- Add this section before the closing </div> tag -->
+<br>
+<section id="tools-technologies">
+    <h2>🛠️ Tools & Technologies Covered</h2>
+    <p class="phase-goal">A comprehensive list of tools and technologies covered throughout the learning journey.</p>
+
+    <h3>Core Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_1"><label for="tool_core_1">Git (Version Control)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_2"><label for="tool_core_2">GitHub (Code Repository)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_3"><label for="tool_core_3">Web Scraping Stack (Requests, BeautifulSoup, Selenium)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_4"><label for="tool_core_4">Streamlit (Web App Development)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_5"><label for="tool_core_5">FastAPI (API Development)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_6"><label for="tool_core_6">MongoDB (NoSQL Database)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_7"><label for="tool_core_7">Excel (Data Analysis)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_core_8"><label for="tool_core_8">Power BI (Data Visualization)</label></li>
+    </ul>
+
+    <h3>Machine Learning Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_1"><label for="tool_ml_1">Scikit-learn (Classical ML)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_2"><label for="tool_ml_2">XGBoost/LightGBM (Boosting)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_3"><label for="tool_ml_3">TensorFlow/Keras (Deep Learning)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_4"><label for="tool_ml_4">PyTorch (Deep Learning)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_5"><label for="tool_ml_5">MLflow (Experiment Tracking)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_6"><label for="tool_ml_6">DVC (Data Version Control)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_7"><label for="tool_ml_7">Statsmodels (Statistical Modeling)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ml_8"><label for="tool_ml_8">SHAP/LIME (Model Interpretability)</label></li>
+    </ul>
+
+    <h3>Big Data & Cloud Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_1"><label for="tool_bigdata_1">Apache Spark (PySpark)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_2"><label for="tool_bigdata_2">Apache Hadoop</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_3"><label for="tool_bigdata_3">Apache Kafka</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_4"><label for="tool_bigdata_4">AWS Stack (EC2, S3, Lambda, SageMaker)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_5"><label for="tool_bigdata_5">Google Cloud Platform (GCP)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_bigdata_6"><label for="tool_bigdata_6">Microsoft Azure</label></li>
+    </ul>
+
+    <h3>MLOps Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_mlops_1"><label for="tool_mlops_1">Kubeflow</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_mlops_2"><label for="tool_mlops_2">TensorFlow Extended (TFX)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_mlops_3"><label for="tool_mlops_3">Weights & Biases</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_mlops_4"><label for="tool_mlops_4">Seldon/BentoML</label></li>
+    </ul>
+
+    <h3>Advanced Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_1"><label for="tool_adv_1">Apache Airflow</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_2"><label for="tool_adv_2">dbt (Data Build Tool)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_3"><label for="tool_adv_3">ONNX</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_4"><label for="tool_adv_4">Fast.ai</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_5"><label for="tool_adv_5">Gym (Reinforcement Learning)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_6"><label for="tool_adv_6">Stable Baselines3</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_7"><label for="tool_adv_7">Docker + Kubernetes</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_adv_8"><label for="tool_adv_8">TensorFlow Lite/PyTorch Mobile</label></li>
+    </ul>
+
+    <h3>AI/ML Frameworks and Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_1"><label for="tool_ai_1">Hugging Face Transformers</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_2"><label for="tool_ai_2">LangChain</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_3"><label for="tool_ai_3">OpenAI API</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_4"><label for="tool_ai_4">AutoML Platforms</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_5"><label for="tool_ai_5">FastAPI + Uvicorn</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_ai_6"><label for="tool_ai_6">DeepPavlov</label></li>
+    </ul>
+
+    <h3>Additional Skills & Tools</h3>
+    <ul>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_1"><label for="tool_add_1">SHAP (Model Explainability)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_2"><label for="tool_add_2">LIME (Model Interpretability)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_3"><label for="tool_add_3">Optuna (Hyperparameter Optimization)</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_4"><label for="tool_add_4">Neptune.ai</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_5"><label for="tool_add_5">Continual Learning Systems</label></li>
+        <li class="task-list-item"><input type="checkbox" id="tool_add_6"><label for="tool_add_6">Active Learning Systems</label></li>
+    </ul>
+</section>
+
+<div class="reward-section">
+    <strong>🏆 Projects Portfolio Phase Reward:</strong>
+    <ul class="mt-2 space-y-2">
+        <li>🌟 Primary Reward: Choose one:</li>
+        <ul class="ml-4 mt-1">
+            <li>• Professional certification in your specialized area (AWS/GCP/Azure ML certification)</li>
+            <li>• Advanced GPU for personal deep learning projects</li>
+            <li>• Premium subscription to a cloud platform for deploying projects</li>
+        </ul>
+        <li>💪 Achievement Milestones:</li>
+        <ul class="ml-4 mt-1">
+            <li>• Published 10+ projects on GitHub with proper documentation</li>
+            <li>• Deployed 5+ live ML applications</li>
+            <li>• Created a personal portfolio website showcasing your projects</li>
+        </ul>
+        <li>🎯 Bonus Reward: Choose one after completing all projects:</li>
+        <ul class="ml-4 mt-1">
+            <li>• High-end development setup upgrade</li>
+            <li>• Conference ticket to a major ML/AI event</li>
+            <li>• Premium course subscription of your choice</li>
+        </ul>
+    </ul>
+    <input type="text" placeholder="Add your personal reward here..." class="mt-3 block w-full p-2 border border-yellow-400 rounded bg-white placeholder-gray-400 text-yellow-700">
+</div>
+
+        <section id="phase-4">
+            <h2>🎯 Phase 5: Interview Ready & Continuous Growth</h2>
+            <p class="phase-goal">Goal: Ace technical interviews, demonstrate soft skills, and establish a habit of lifelong learning.</p>
+
+            <h3>22. Coding & Algorithm Practice (Refresher & Deep Dive)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s22t1"><label for="p4s22t1"><strong>Data Structures Review:</strong> Arrays, Linked Lists, Stacks, Queues, Trees (Binary, BST, Tries), Heaps, Graphs, Hash Tables</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s22t2"><label for="p4s22t2"><strong>Algorithm Review:</strong> Sorting, Searching, Recursion, Dynamic Programming, Graph Traversal (BFS, DFS), Greedy Algorithms</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s22t3"><label for="p4s22t3"><strong>LeetCode / HackerRank Practice:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p4s22t3_1"><label for="p4s22t3_1">Focus on Medium difficulty, progressing to Hard</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p4s22t3_2"><label for="p4s22t3_2">Problems relevant to data manipulation, arrays, strings, trees, graphs</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p4s22t3_3"><label for="p4s22t3_3">Aim for consistency and ability to explain solutions clearly</label></li>
+                </ul>
+            </ul>
+
+            <h3>23. ML Concepts & Theory Review</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s23t1"><label for="p4s23t1"><strong>Revisit Core Concepts:</strong> Bias-Variance, Evaluation Metrics, Assumptions of models, etc.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s23t2"><label for="p4s23t2"><strong>Explainability:</strong> SHAP, LIME (understanding concepts)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s23t3"><label for="p4s23t3"><strong>Fairness & Ethics in AI:</strong> Awareness of bias and mitigation strategies</label></li>
+            </ul>
+
+            <h3>24. System Design Practice (ML Focus)</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s24t1"><label for="p4s24t1"><strong>Practice Mock Design Interviews:</strong> Use frameworks (e.g., clarifying questions, defining components, discussing trade-offs, scaling)</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s24t2"><label for="p4s24t2"><strong>Review Common ML System Designs</strong></label></li>
+            </ul>
+
+            <h3>25. Projects & Portfolio Building</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s14t1"><label for="p2s14t1"><strong>Kaggle Competitions:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t1_1"><label for="p2s14t1_1">Participate actively (aim for 5-10+ serious participations)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t1_2"><label for="p2s14t1_2">Focus on learning from top solutions (reading write-ups, code)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t1_3"><label for="p2s14t1_3">Practice EDA, feature engineering, modeling, ensembling</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s14t2"><label for="p2s14t2"><strong>End-to-End Personal Projects (Aim for 3-5 solid projects):</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_1"><label for="p2s14t2_1">Define a problem</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_2"><label for="p2s14t2_2">Gather or find data (can combine scraping, APIs, public datasets)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_3"><label for="p2s14t2_3">Perform thorough EDA and preprocessing</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_4"><label for="p2s14t2_4">Build and evaluate multiple models</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_5"><label for="p2s14t2_5"><em>Crucially:</em> Deploy the model (even simply, e.g., using Flask/Streamlit)</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t2_6"><label for="p2s14t2_6">Document clearly in a GitHub repository (README, code comments)</label></li>
+                </ul>
+                <li class="task-list-item"><input type="checkbox" id="p2s14t3"><label for="p2s14t3"><strong>GitHub Portfolio:</strong></label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t3_1"><label for="p2s14t3_1">Curate your best projects</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t3_2"><label for="p2s14t3_2">Ensure clean, well-documented code</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t3_3"><label for="p2s14t3_3">Write compelling README files explaining the project, process, and results</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p2s14t3_4"><label for="p2s14t3_4">Contribute to Open Source (Optional but valuable)</label></li>
+                </ul>
+            </ul>
+
+            <h3>26. Behavioral Preparation & Soft Skills</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s25t1"><label for="p4s25t1"><strong>Prepare STAR Method Stories:</strong> For teamwork, leadership, conflict resolution, handling failure, challenges, successes.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s25t2"><label for="p4s25t2"><strong>Communication Practice:</strong> Explaining complex topics simply, data storytelling, presenting results.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s25t3"><label for="p4s25t3"><strong>Collaboration:</strong> Understanding Git workflows in teams, code review practices.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s25t4"><label for="p4s25t4"><strong>Resume/Portfolio Polishing:</strong> Tailor to specific job descriptions.</label></li>
+            </ul>
+
+            <h3>26. Mock Interviews</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s26t1"><label for="p4s26t1"><strong>Seek Mock Interviews:</strong> With peers, mentors, or platforms covering:</label></li>
+                <ul>
+                    <li class="task-list-item"><input type="checkbox" id="p4s26t1_1"><label for="p4s26t1_1">Coding / Data Structures / Algorithms</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p4s26t1_2"><label for="p4s26t1_2">ML Theory & Concepts</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p4s26t1_3"><label for="p4s26t1_3">ML System Design</label></li>
+                    <li class="task-list-item"><input type="checkbox" id="p4s26t1_4"><label for="p4s26t1_4">Behavioral Questions</label></li>
+                </ul>
+            </ul>
+
+            <h3>27. Lifelong Learning</h3>
+            <ul>
+                <li class="task-list-item"><input type="checkbox" id="p4s27t1"><label for="p4s27t1"><strong>Establish Habits:</strong> Continue reading papers, blogs, taking courses, experimenting with new tools.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s27t2"><label for="p4s27t2"><strong>Mentorship:</strong> Seek mentors and consider mentoring others.</label></li>
+                <li class="task-list-item"><input type="checkbox" id="p4s27t3"><label for="p4s27t3"><strong>Networking:</strong> Engage with the community.</label></li>
+            </ul>
+
+            <div class="reward-section bg-green-100 border-green-300 text-green-700">
+                <strong>🏁 Final Goal / Reward:</strong>
+                 <input type="text" placeholder="Define your ultimate goal/reward (e.g., Dream job...)" class="mt-1 block w-full p-2 border border-green-400 rounded bg-white placeholder-gray-400 text-green-800">
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-300">
+
+        <div class="notes-section">
+            <h3 class="text-gray-800 border-b-0 mt-0 mb-2">Notes:</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li><strong>Flexibility:</strong> This is a template. Adjust based on your interests (e.g., deeper focus on CV vs. NLP) and background.</li>
+                <li><strong>Depth over Breadth:</strong> While covering breadth is important, true expertise comes from going deep in chosen areas, especially in Phases 2 and 3.</li>
+                <li><strong>Hands-on:</strong> Theory is crucial, but practical application through projects and coding is paramount.</li>
+                <li><strong>Consistency:</strong> Progress takes time. Aim for consistent effort rather than short bursts. Good luck!</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script>
+// Add at the top of your script section
+function addSearchBox() {
+    const searchBox = document.createElement('div');
+    searchBox.className = 'search-box mb-4';
+    searchBox.innerHTML = `
+        <input type="text" 
+               placeholder="Search tasks..." 
+               class="w-full p-2 border rounded-lg"
+               id="taskSearch">
+        <div class="mt-2 flex gap-2">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="completed">Completed</button>
+            <button class="filter-btn" data-filter="pending">Pending</button>
+        </div>
+    `;
+    
+    document.querySelector('.max-w-4xl').insertBefore(
+        searchBox, 
+        document.querySelector('h1')
+    );
+}
+// Add export functionality
+function addExportButton() {
+    const exportBtn = document.createElement('button');
+    exportBtn.innerHTML = '📊 Export Progress';
+    exportBtn.className = 'ml-4 bg-blue-500 text-white px-4 py-2 rounded';
+    exportBtn.onclick = exportProgress;
+    
+    document.getElementById('clearButton').parentNode.appendChild(exportBtn);
+}
+
+function exportRevisionProgress() {
+    const exportBtn = document.querySelectorAll('.export-btn')[2]; // 3rd button (Revision Export)
+    exportBtn.innerHTML = '⏳ Exporting...';
+    exportBtn.disabled = true;
+
+    let content = `AI/ML & Data Science Revision Progress Report\n`;
+    content += `Generated on: ${new Date().toLocaleString()}\n\n`;
+    content += `-------------------\n\n`;
+
+    document.querySelectorAll('section').forEach(section => {
+        let sectionTitle = section.querySelector('h2')?.textContent;
+        if (section.id === 'phase-1') {
+            sectionTitle = '🎯 Phase 1: Foundation';
+        }
+        const tasks = section.querySelectorAll('input[type="checkbox"]:not([disabled])');
+        if (tasks.length > 0) {
+            content += `${sectionTitle}\n`;
+            tasks.forEach(task => {
+                const label = task.nextElementSibling.textContent;
+                const revCount = localStorage.getItem(`${task.id}_rev`) || '0';
+                const revDate = localStorage.getItem(`${task.id}_revdate`);
+                if (parseInt(revCount) > 0) {
+                    content += `- ${label} | Revisions: ${revCount}x${revDate ? ` (Last: ${new Date(revDate).toLocaleDateString()})` : ''}\n`;
+                }
+            });
+            content += `\n-------------------\n\n`;
+        }
+    });
+
+    // Create and download the file
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AI-ML-Revision-Progress-${new Date().toLocaleDateString().replace(/\//g, '-')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    setTimeout(() => {
+        exportBtn.innerHTML = '🔁 Export Revision Progress';
+        exportBtn.disabled = false;
+    }, 1000);
+}
+// Replace your existing export function with this improved version
+
+// Replace the existing export function with this one
+
+function exportProgress() {
+    const exportBtn = document.querySelector('.export-btn');
+    exportBtn.innerHTML = '⏳ Exporting...';
+    exportBtn.disabled = true;
+
+    // Get overall progress
+    const overallProgress = document.querySelector('.progress-percentage').textContent;
+    const totalTasks = document.querySelector('.progress-label').textContent;
+
+    // Create content for the report
+    let content = `AI/ML & Data Science Learning Progress Report\n`;
+    content += `Generated on: ${new Date().toLocaleString()}\n\n`;
+    content += `Overall Progress: ${overallProgress}\n`;
+    content += `${totalTasks}\n\n`;
+    content += `-------------------\n\n`;
+
+    // Get progress for each section
+    document.querySelectorAll('section').forEach(section => {
+        // Get section title from h2 or fall back to section ID for Phase 1
+        let sectionTitle = section.querySelector('h2')?.textContent;
+        if (section.id === 'phase-1') {
+            sectionTitle = '🎯 Phase 1: Foundation';
+        }
+        
+        const tasks = section.querySelectorAll('input[type="checkbox"]:not([disabled])');
+        const completedTasks = Array.from(tasks).filter(t => t.checked).length;
+        const totalSectionTasks = tasks.length;
+        const sectionProgress = ((completedTasks / totalSectionTasks) * 100).toFixed(1);
+
+        if (totalSectionTasks > 0) {  // Only add sections that have tasks
+            content += `${sectionTitle}\n`;
+            content += `Progress: ${sectionProgress}% (${completedTasks}/${totalSectionTasks} tasks)\n\n`;
+
+            // Add completed tasks
+            if (completedTasks > 0) {
+                content += `Completed tasks in this section:\n`;
+                tasks.forEach(task => {
+                    if (task.checked) {
+                        const taskLabel = task.nextElementSibling.textContent;
+                        const completedDate = localStorage.getItem(`${task.id}_completedAt`);
+                        const dateStr = completedDate ? new Date(completedDate).toLocaleDateString() : 'Unknown date';
+                        content += `✓ ${taskLabel} (Completed: ${dateStr})\n`;
+                    }
+                });
+            }
+            content += `\n-------------------\n\n`;
+        }
+    });
+
+    // Create and download the file
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AI-ML-Progress-Report-${new Date().toLocaleDateString().replace(/\//g, '-')}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    // Reset button state
+    setTimeout(() => {
+        exportBtn.innerHTML = '📊 Export Progress';
+        exportBtn.disabled = false;
+    }, 1000);
+}
+
+function exportProgressAsPDF() {
+    const exportBtn = document.querySelector('.export-btn');
+    exportBtn.innerHTML = '⏳ Exporting PDF...';
+    exportBtn.disabled = true;
+
+    // Create content for the PDF with improved styling
+    const content = document.createElement('div');
+    content.innerHTML = `
+        <div style="padding: 20px; font-family: Arial, sans-serif;">
+            <h1 style="text-align: center; color: #1a365d; margin-bottom: 20px; font-size: 32px; font-weight: bold; 
+                background: linear-gradient(120deg, #1a365d 0%, #2c5282 100%);
+                -webkit-background-clip: text; color: #FFFFFF; padding: 20px 0;">
+                AI/ML & Data Science Learning Progress Report
+            </h1>
+            <p style="text-align: center; color: #4a5568; margin-bottom: 30px; font-size: 16px;">
+                Generated on: ${new Date().toLocaleString()}
+            </p>
+            <div style="margin-bottom: 30px; text-align: center; background-color: #f7fafc; padding: 20px; border-radius: 8px;">
+                <h2 style="color: #1a365d; font-size: 24px; margin-bottom: 15px;">Overall Progress</h2>
+                <p style="font-size: 36px; color: #3182ce; font-weight: bold;">${document.querySelector('.progress-percentage').textContent}</p>
+                <p style="color: #4a5568; font-size: 18px;">${document.querySelector('.progress-label').textContent}</p>
+            </div>
+            <hr style="border: 2px solid #e2e8f0; margin: 20px 0;">
+    `;
+
+    // Add section progress with improved styling
+    document.querySelectorAll('section').forEach(section => {
+        let sectionTitle = section.querySelector('h2')?.textContent;
+        if (section.id === 'phase-1') {
+            sectionTitle = '🎯 Phase 1: Foundation';
+        }
+
+        if (sectionTitle) {
+            const tasks = section.querySelectorAll('input[type="checkbox"]:not([disabled])');
+            const completed = Array.from(tasks).filter(t => t.checked).length;
+            const total = tasks.length;
+            
+            if (total > 0) {
+                const progress = ((completed / total) * 100).toFixed(1);
+                const completedTasks = Array.from(tasks)
+                    .filter(t => t.checked)
+                    .map(t => t.nextElementSibling.textContent);
+
+                content.innerHTML += `
+                    <div style="margin: 20px 0; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background-color: #fff;">
+                        <h3 style="color: #1a365d; margin-bottom: 15px; font-size: 20px; font-weight: bold;">
+                            ${sectionTitle}
+                        </h3>
+                        <div style="background-color: #f7fafc; padding: 10px; border-radius: 4px;">
+                            <p style="color: #2d3748; font-size: 16px; margin-bottom: 10px;">
+                                Progress: <span style="color: #3182ce; font-weight: bold;">${progress}%</span> 
+                                (${completed}/${total} tasks)
+                            </p>
+                        </div>
+                        ${completedTasks.length > 0 ? `
+                            <div style="margin-top: 15px;">
+                                <p style="color: #2d3748; font-weight: bold; font-size: 16px;">Completed tasks:</p>
+                                <ul style="margin-left: 20px; color: #4a5568; font-size: 14px;">
+                                    ${completedTasks.map(task => `
+                                        <li style="margin: 5px 0; color: #2d3748;">✓ ${task}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+        }
+    });
+
+    content.innerHTML += '</div>';
+
+    // PDF options with improved settings
+    const opt = {
+        margin: [0.5, 0.5, 0.5, 0.5],
+        filename: `AI-ML-Progress-Report-${new Date().toLocaleDateString().replace(/\//g, '-')}.pdf`,
+        image: { type: 'jpeg', quality: 1 },
+        html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            logging: false
+        },
+        jsPDF: { 
+            unit: 'in', 
+            format: 'letter', 
+            orientation: 'portrait'
+        },
+        pagebreak: { mode: 'avoid-all' }
+    };
+
+    // Generate PDF
+    html2pdf()
+        .set(opt)
+        .from(content)
+        .save()
+        .then(() => {
+            exportBtn.innerHTML = '📑 Export as PDF';
+            exportBtn.disabled = false;
+        })
+        .catch(err => {
+            console.error('PDF generation failed:', err);
+            exportBtn.innerHTML = '❌ Export Failed';
+            setTimeout(() => {
+                exportBtn.innerHTML = '📑 Export as PDF';
+                exportBtn.disabled = false;
+            }, 2000);
+        });
+}
+// Add section progress bars
+function addSectionProgress() {
+    document.querySelectorAll('section').forEach(section => {
+        const tasks = section.querySelectorAll('input[type="checkbox"]');
+        const completed = Array.from(tasks).filter(t => t.checked).length;
+        const percent = (completed / tasks.length * 100).toFixed(1);
+        
+        const progressBar = document.createElement('div');
+        progressBar.className = 'section-progress mt-2';
+        progressBar.innerHTML = `
+            <div class="bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div class="bg-blue-600 h-2.5 rounded-full" 
+                     style="width: ${percent}%"></div>
+            </div>
+            <span class="text-sm text-gray-500 mt-1">${percent}% Complete</span>
+        `;
+        
+        section.querySelector('h2')?.appendChild(progressBar);
+    });
+}
+
+// Add time estimates to sections
+function addTimeEstimates() {
+    const estimates = {
+        'phase-1': '2-3 months',
+        'phase-2': '3-4 months',
+        'phase-3': '2-3 months',
+        'phase-4-projects': '3-4 months',
+        'phase-4': '1-2 months'
+    };
+
+    Object.entries(estimates).forEach(([id, time]) => {
+        const section = document.getElementById(id);
+        if (section) {
+            const heading = section.querySelector('h2');
+            const estimate = document.createElement('span');
+            estimate.className = 'time-estimate';
+            estimate.textContent = `(Est. ${time})`;
+            heading.appendChild(estimate);
+        }
+    });
+}
+
+function updateProgress() {
+            const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
+            const totalTasks = checkboxes.length;
+            const completedTasks = Array.from(checkboxes).filter(checkbox => checkbox.checked).length;
+            const progressPercent = (completedTasks / totalTasks * 100).toFixed(2); // Show 2 decimal places
+
+            // Update the circle progress
+            const circle = document.querySelector('.progress-circle-progress');
+            const radius = circle.getAttribute('r');
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (progressPercent / 100) * circumference;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = offset;
+
+            // Update the percentage text with 2 decimal places
+            document.querySelector('.progress-percentage').textContent = `${progressPercent}%`;
+
+            // Optional: Add total tasks count
+            document.querySelector('.progress-label').textContent = 
+                `${completedTasks}/${totalTasks} Tasks`;
+        }
+        // Add event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add to your existing DOMContentLoaded event listener
+            const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:not([disabled])');
+            
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+
+            // Initial progress update
+            updateProgress();
+
+            // Add to clear button event
+            document.getElementById('clearButton').addEventListener('click', function() {
+                // ... your existing clear logic ...
+                updateProgress();
+            });
+        });
+
+        // Add these utility functions at the top of your script section
+     
+
+        document.getElementById('clearButton').addEventListener('click', function() {
+            // Find all checkboxes within the main container
+            const checkboxes = document.querySelectorAll('.max-w-4xl input[type="checkbox"]');
+            // Loop through them and uncheck each one
+            checkboxes.forEach(checkbox => {
+                // Only uncheck if it's not disabled (like the 'Tools:' items)
+                if (!checkbox.disabled) {
+                    checkbox.checked = false;
+                }
+            });
+        });
+
+
+        // Optional: Add basic persistence using localStorage (commented out by default)
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.max-w-4xl input[type="checkbox"]');
+
+            // Load saved state
+            checkboxes.forEach(checkbox => {
+                if (checkbox.id) { // Only save/load checkboxes with IDs
+                    const savedState = localStorage.getItem(checkbox.id);
+                    if (savedState !== null) {
+                        checkbox.checked = savedState === 'true';
+                    }
+                }
+            });
+
+            // Save state on change
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.id) { // Only save/load checkboxes with IDs
+                         localStorage.setItem(checkbox.id, checkbox.checked);
+                    }
+                });
+            });
+
+            // Clear localStorage when clearing checks
+        document.getElementById('clearButton').addEventListener('click', function() {
+                checkboxes.forEach(checkbox => {
+                if (checkbox.id) {
+                    localStorage.removeItem(checkbox.id);
+                }
+                });
+        });
+    });
+         
+// Add this to your existing <script> tag
+
+// Theme toggling
+const themeToggle = document.querySelector('.theme-toggle');
+const lightIcon = document.querySelector('.light-icon');
+const darkIcon = document.querySelector('.dark-icon');
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    if (theme === 'dark') {
+        lightIcon.style.display = 'none';
+        darkIcon.style.display = 'inline';
+        // Update progress circle colors for dark mode
+        document.querySelector('.progress-circle-bg').style.stroke = '#4a5568';
+        document.querySelector('.progress-circle-progress').style.stroke = '#4299e1';
+    } else {
+        lightIcon.style.display = 'inline';
+        darkIcon.style.display = 'none';
+        // Update progress circle colors for light mode
+        document.querySelector('.progress-circle-bg').style.stroke = '#edf2f7';
+        document.querySelector('.progress-circle-progress').style.stroke = '#4299e1';
+    }
+
+    // Force a redraw of the progress circle
+    updateProgress();
+}
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);
+
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+// Update the celebrate function
+function celebrate() {
+    const celebration = document.getElementById('celebration');
+    if (!celebration) return; // Guard clause
+
+    const celebrations = [
+        { emoji: '🎉', message: 'Great job!' },
+        { emoji: '⭐', message: 'Keep going!' },
+        { emoji: '🏆', message: 'You\'re crushing it!' },
+        { emoji: '🚀', message: 'One step closer!' },
+        { emoji: '💪', message: 'Awesome progress!' }
+    ];
+
+    const randomCelebration = celebrations[Math.floor(Math.random() * celebrations.length)];
+    
+    celebration.innerHTML = `
+        <div style="font-size: 3rem; text-align: center; color: var(--text-primary);">
+            ${randomCelebration.emoji}
+            <div style="font-size: 1.5rem; margin-top: 0.5rem;">${randomCelebration.message}</div>
+        </div>
+    `;
+    
+    celebration.classList.add('show');
+    
+    // Add confetti effect
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#4299e1', '#48bb78', '#ed8936', '#ed64a6']
+    });
+
+    setTimeout(() => {
+        celebration.classList.remove('show');
+    }, 2000);
+}
+
+// Update the checkbox event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]');
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                celebrate();
+                updateProgress();
+            } else {
+                updateProgress();
+            }
+        });
+    });
+
+    // Initial progress update
+    updateProgress();
+});
+      
+window.addEventListener('beforeunload', (e) => {
+    const checkboxes = document.querySelectorAll('.task-list-item input[type="checkbox"]:checked');
+    if (checkboxes.length > 0) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+});
+
+// Add this to your script section
+
+// Search and filter functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('taskSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    function filterTasks() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+        const tasks = document.querySelectorAll('.task-list-item');
+        
+        tasks.forEach(task => {
+            const label = task.querySelector('label');
+            const checkbox = task.querySelector('input[type="checkbox"]');
+            const text = label.textContent.toLowerCase();
+            let shouldShow = text.includes(searchTerm);
+            
+            // Apply active filter
+            if (activeFilter === 'completed') {
+                shouldShow = shouldShow && checkbox.checked;
+            } else if (activeFilter === 'pending') {
+                shouldShow = shouldShow && !checkbox.checked;
+            }
+            
+            task.style.display = shouldShow ? '' : 'none';
+        });
+    }
+
+    // Search input event
+    searchInput.addEventListener('input', filterTasks);
+    
+    // Filter button clicks
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            filterTasks();
+        });
+    });
+});
+
+// Add to your existing <script> section
+    // Replace the existing text size control JavaScript with this
+document.addEventListener('DOMContentLoaded', () => {
+    const textSizeButtons = document.querySelectorAll('.text-size-btn');
+    const content = document.querySelector('.max-w-4xl');
+    
+    function updateTextSize(size) {
+        content.style.fontSize = `${size}%`;
+        
+        // Update active button
+        textSizeButtons.forEach(btn => {
+            btn.classList.toggle('active', parseInt(btn.dataset.size) === parseInt(size));
+        });
+        
+        // Save preference
+        localStorage.setItem('preferredTextSize', size);
+    }
+    
+    // Load saved preference
+    const savedSize = localStorage.getItem('preferredTextSize');
+    if (savedSize) {
+        updateTextSize(savedSize);
+    }
+    
+    // Button events
+    textSizeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            updateTextSize(button.dataset.size);
+        });
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey) {
+            if (e.key === '=') {
+                e.preventDefault();
+                const currentSize = parseInt(localStorage.getItem('preferredTextSize') || 100);
+                const newSize = Math.min(currentSize + 10, 120);
+                updateTextSize(newSize);
+            } else if (e.key === '-') {
+                e.preventDefault();
+                const currentSize = parseInt(localStorage.getItem('preferredTextSize') || 100);
+                const newSize = Math.max(currentSize - 10, 90);
+                updateTextSize(newSize);
+            } else if (e.key === '0') {
+                e.preventDefault();
+                updateTextSize(100);
+            }
+        }
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.task-list-item').forEach(item => {
+    // Skip if already has a tracker
+    if (item.querySelector('.revision-tracker')) return;
+    const input = item.querySelector('input[type="checkbox"]');
+    const label = item.querySelector('label');
+    if (!input || !label) return;
+    const taskId = input.id;
+
+    // Create tracker
+    const tracker = document.createElement('div');
+    tracker.className = 'revision-tracker';
+    tracker.setAttribute('data-task', taskId);
+
+    // Load revision data from localStorage
+    let count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10);
+    let lastDate = localStorage.getItem(taskId + '_revdate') || '';
+
+    tracker.innerHTML = `
+  <button class="revision-btn revision-decr" title="Decrease revision">➖</button>
+  <span class="revision-count">${count}x</span>
+  <button class="revision-btn revision-incr" title="Add revision">🔄</button>
+  <span class="last-revision-date">${lastDate ? new Date(lastDate).toLocaleDateString() : ''}</span>
+`;
+
+    // Wrap input+label in .task-flex
+    const flex = document.createElement('div');
+    flex.className = 'task-flex';
+    flex.appendChild(input.cloneNode(true));
+    flex.appendChild(label.cloneNode(true));
+    flex.appendChild(tracker); // tracker on the right
+    item.innerHTML = '';
+    item.appendChild(flex);
+
+    const incrBtn = tracker.querySelector('.revision-incr');
+const decrBtn = tracker.querySelector('.revision-decr');
+const countSpan = tracker.querySelector('.revision-count');
+const dateSpan = tracker.querySelector('.last-revision-date');
+
+incrBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  count = parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) + 1;
+  lastDate = new Date().toISOString();
+  localStorage.setItem(taskId + '_rev', count);
+  localStorage.setItem(taskId + '_revdate', lastDate);
+  countSpan.textContent = `${count}x`;
+  dateSpan.textContent = new Date(lastDate).toLocaleDateString();
+  countSpan.style.transform = 'scale(1.2)';
+  setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
+});
+
+decrBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  count = Math.max(0, parseInt(localStorage.getItem(taskId + '_rev') || '0', 10) - 1);
+  localStorage.setItem(taskId + '_rev', count);
+  if (count === 0) {
+    localStorage.removeItem(taskId + '_revdate');
+    dateSpan.textContent = '';
+  } else {
+    dateSpan.textContent = new Date(localStorage.getItem(taskId + '_revdate')).toLocaleDateString();
+  }
+  countSpan.textContent = `${count}x`;
+  countSpan.style.transform = 'scale(1.2)';
+  setTimeout(() => countSpan.style.transform = 'scale(1)', 200);
+});
+    });
+  });
+
+</script>
+
+</body>
+</html>
